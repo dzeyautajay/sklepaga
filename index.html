@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel</title>
+</head>
+
+<!-- NAVIGATION BAR -->
+
+<nav class="relative bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900 z-50">
+  <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+    <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+    </a>
+    <button data-collapse-toggle="mega-menu-full" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu-full" aria-expanded="false">
+      <span class="sr-only">Open main menu</span>
+      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+      </svg>
+    </button>
+    <div id="mega-menu-full" class="items-center justify-between font-medium hidden w-full md:flex md:w-auto md:order-1">
+      <ul class="flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+        <li>
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">Home</a>
+        </li>
+        <li>
+          <button id="mega-menu-full-dropdown-button" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm md:w-auto hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">
+            Company
+            <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+            </svg>
+          </button>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">Marketplace</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">Resources</a>
+        </li>
+        <li>
+          <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Mega Menu Dropdown -->
+  <div id="mega-menu-full-dropdown" class="absolute top-full left-0 w-full max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-gray-50 md:bg-white border-y border-gray-200 dark:bg-gray-800 dark:border-gray-600 z-40 opacity-0 pointer-events-none">
+    <div class="grid max-w-screen-xl px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:px-6">
+      <ul>
+        <li>
+          <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+            <div class="font-semibold">Online Stores</div>
+            <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+            <div class="font-semibold">Segmentation</div>
+            <span class="text-sm text-gray-500 dark:text-gray-400">Target the right customers with relevant messages.</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+            <div class="font-semibold">Marketing CRM</div>
+            <span class="text-sm text-gray-500 dark:text-gray-400">Keep track of your contacts and campaigns.</span>
+          </a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+            <div class="font-semibold">Automation</div>
+            <span class="text-sm text-gray-500 dark:text-gray-400">Automate your marketing workflows with ease.</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+            <div class="font-semibold">Reports</div>
+            <span class="text-sm text-gray-500 dark:text-gray-400">Detailed analytics and insights at your fingertips.</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
+            <div class="font-semibold">Integrations</div>
+            <span class="text-sm text-gray-500 dark:text-gray-400">Seamlessly connect with your favorite tools.</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<body>
+
+<!-- HEADER CAROUSEL -->
+<div id="default-carousel" class="relative w-full" data-carousel="slide">
+    <!-- Carousel wrapper -->
+    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+         <!-- Item 1 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="images\images.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 2 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="images\images.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 3 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="images\images.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 4 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="images\images.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+        <!-- Item 5 -->
+        <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <img src="images\images.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+        </div>
+    </div>
+    <!-- Slider indicators -->
+    <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+        <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+    </div>
+    <!-- Slider controls -->
+    <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+            </svg>
+            <span class="sr-only">Previous</span>
+        </span>
+    </button>
+    <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+        <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+            <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+            </svg>
+            <span class="sr-only">Next</span>
+        </span>
+    </button>
+</div>
+
+<!-- HEADER TITLE -->
+<section class="bg-white px-4 py-8 antialiased dark:bg-gray-900 md:py-16">
+  <div class="mx-auto max-w-screen-xl text-center">
+    <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+      We invest in the world’s potential
+    </h1>
+    <p class="mb-6 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
+      Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.
+    </p>
+    <a href="#" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+      Learn more
+      <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+      </svg>
+    </a>
+  </div>
+</section>
+
+
+<!-- IMAGE WITH DESCRIPTION -->
+
+<!-- IMAGE WITH DESCRIPTION #1 -->
+ <section class="bg-white dark:bg-gray-900">
+    <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
+        <img class="w-full dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image">
+        <img class="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image">
+        <div class="mt-4 md:mt-0">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Let's create more tools and ideas that brings us together.</h2>
+            <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.</p>
+            <a href="#" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+            Get started
+            <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+            </a>
+        </div>
+    </div>
+</section>
+<!-- IMAGE WITH DESCRIPTION #2 -->
+<section class="bg-white dark:bg-gray-900">
+  <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 sm:py-16 lg:px-6 md:grid md:grid-cols-2">
+    
+    <!-- IMAGE (appears on top on small screens) -->
+    <div class="order-1 md:order-2">
+      <img class="w-full dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image">
+      <img class="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image">
+    </div>
+
+    <!-- TEXT (appears below on small screens, left on desktop) -->
+    <div class="order-2 md:order-1 mt-4 md:mt-0">
+      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+        Let's create more tools and ideas that bring us together.
+      </h2>
+      <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">
+        Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.
+      </p>
+      <a href="#" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+        Get started
+        <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+ 
+<!-- CARD CAROUSEL -->
+<section class="bg-white dark:bg-gray-900 py-12 px-4 relative select-none">
+  <div class="max-w-screen-xl mx-auto relative">
+
+    <!-- Carousel container -->
+    <div id="carouselCards" class="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar transition-all duration-700 ease-in-out cursor-grab active:cursor-grabbing">
+      
+      <!-- Card Example (repeat for all cards) -->
+      <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0">
+        <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
+          <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
+          <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
+        </div>
+      </div>
+
+     <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0">
+        <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
+          <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
+          <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
+        </div>
+      </div>
+
+      <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0">
+        <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
+          <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
+          <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
+        </div>
+      </div>
+
+      <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0">
+        <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
+          <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
+          <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
+        </div>
+      </div>
+
+      <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0">
+        <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
+          <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
+          <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
+        </div>
+      </div>
+
+      <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0">
+        <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
+          <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
+          <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
+        </div>
+      </div>
+
+      <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0">
+        <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image">
+        <div class="p-5">
+          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
+          <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
+          <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
+        </div>
+      </div>
+
+    </div>
+    
+  <!-- Navigation buttons container BELOW carousel, aligned bottom right -->
+    <div class="flex justify-end mt-4 gap-3">
+      <!-- Prev Button (hidden initially) -->
+      <button id="prevArrow" class="hidden flex items-center justify-center h-10 w-10 rounded-full bg-white/30 dark:bg-gray-800/30 hover:bg-white/50 dark:hover:bg-gray-800/60 text-gray-800 dark:text-white focus:outline-none transition">
+        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+        </svg>
+        <span class="sr-only">Previous</span>
+      </button>
+
+      <!-- Next Button -->
+      <button id="nextArrow" class="flex items-center justify-center h-10 w-10 rounded-full bg-white/30 dark:bg-gray-800/30 hover:bg-white/50 dark:hover:bg-gray-800/60 text-gray-800 dark:text-white focus:outline-none transition">
+        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+        </svg>
+        <span class="sr-only">Next</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Hide Scrollbar CSS -->
+  <style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</section>
+
+
+<section class="bg-white px-4 py-8 antialiased dark:bg-gray-900 md:py-16">
+  <div class="mx-auto grid max-w-screen-xl rounded-lg bg-gray-50 p-4 dark:bg-gray-800 md:p-8 lg:grid-cols-12 lg:gap-8 lg:p-16 xl:gap-16">
+    <div class="lg:col-span-5 lg:mt-0">
+      <a href="#">
+        <img class="mb-4 h-56 w-56 dark:hidden sm:h-96 sm:w-96 md:h-full md:w-full" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-components.svg" alt="peripherals" />
+        <img class="mb-4 hidden dark:block md:h-full" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-components-dark.svg" alt="peripherals" />
+      </a>
+    </div>
+    <div class="me-auto place-self-center lg:col-span-7">
+      <h1 class="mb-3 text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-4xl">
+        Save $500 today on your purchase <br />
+        of a new iMac computer.
+      </h1>
+      <p class="mb-6 text-gray-500 dark:text-gray-400">Reserve your new Apple iMac 27” today and enjoy exclusive savings with qualified activation. Pre-order now to secure your discount.</p>
+      <a href="#" class="inline-flex items-center justify-center rounded-lg bg-primary-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"> Pre-order now </a>
+    </div>
+  </div>
+</section>
+
+</body>
+<script src="index.js"></script>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Flowbite JS (requires Tailwind + Alpine or Vanilla JS) -->
+<script src="https://unpkg.com/flowbite@2.3.0/dist/flowbite.min.js"></script>
+
+</html>
