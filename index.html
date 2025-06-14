@@ -9,59 +9,82 @@
 </head>
 
 <!-- NAVIGATION BAR -->
-
 <nav class="relative bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900 z-50">
-  <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+  <div class="flex flex-wrap items-center justify-between mx-auto max-w-screen-xl p-4">
+    <!-- Logo -->
     <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
       <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
     </a>
-    <button data-collapse-toggle="mega-menu-full" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu-full" aria-expanded="false">
-      <span class="sr-only">Open main menu</span>
-      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+
+    <!-- Hamburger Button -->
+    <button
+      id="menu-toggle-btn"
+      data-collapse-toggle="mega-menu-full"
+      aria-expanded="false"
+      class="md:hidden ml-auto p-2 inline-flex items-center justify-center rounded focus:outline-none focus:ring-2 focus:ring-gray-200">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path
+          id="menu-icon-path"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
-    <div id="mega-menu-full" class="items-center justify-between font-medium hidden w-full md:flex md:w-auto md:order-1">
-      <ul class="flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+
+    <!-- Menu Links -->
+   <div id="mega-menu-full" class="items-center justify-between font-medium hidden w-full md:flex md:w-auto md:order-1">
+    <ul
+        class="flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
         <li>
-          <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">Home</a>
+          <a href="#"
+            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">Home</a>
         </li>
         <li>
-          <button id="mega-menu-full-dropdown-button" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm md:w-auto hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">
+          <button id="mega-menu-full-dropdown-button"
+            class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm md:w-auto hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">
             Company
-            <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+            <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+              viewBox="0 0 10 6">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m1 1 4 4 4-4" />
             </svg>
           </button>
         </li>
         <li>
-          <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">Marketplace</a>
+          <a href="#"
+            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">Marketplace</a>
         </li>
         <li>
-          <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">Resources</a>
+          <a href="#"
+            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">Resources</a>
         </li>
         <li>
-          <a href="#" class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">Contact</a>
+          <a href="#"
+            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">Contact</a>
         </li>
       </ul>
     </div>
   </div>
 
   <!-- Mega Menu Dropdown -->
-  <div id="mega-menu-full-dropdown" class="absolute top-full left-0 w-full max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-gray-50 md:bg-white border-y border-gray-200 dark:bg-gray-800 dark:border-gray-600 z-40 opacity-0 pointer-events-none">
+  <div id="mega-menu-full-dropdown"
+    class="absolute top-full left-0 w-full max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-gray-50 md:bg-white border-y border-gray-200 dark:bg-gray-800 dark:border-gray-600 z-40 opacity-0 pointer-events-none">
     <div class="grid max-w-screen-xl px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:px-6">
       <ul>
         <li>
           <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
             <div class="font-semibold">Online Stores</div>
-            <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already using.</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already
+              using.</span>
           </a>
         </li>
         <li>
           <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
             <div class="font-semibold">Segmentation</div>
-            <span class="text-sm text-gray-500 dark:text-gray-400">Target the right customers with relevant messages.</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400">Target the right customers with relevant
+              messages.</span>
           </a>
         </li>
         <li>
@@ -81,7 +104,8 @@
         <li>
           <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
             <div class="font-semibold">Reports</div>
-            <span class="text-sm text-gray-500 dark:text-gray-400">Detailed analytics and insights at your fingertips.</span>
+            <span class="text-sm text-gray-500 dark:text-gray-400">Detailed analytics and insights at your
+              fingertips.</span>
           </a>
         </li>
         <li>
@@ -94,6 +118,7 @@
     </div>
   </div>
 </nav>
+
 
 <body>
 
@@ -187,6 +212,7 @@
         </div>
     </div>
 </section>
+
 <!-- IMAGE WITH DESCRIPTION #2 -->
 <section class="bg-white dark:bg-gray-900">
   <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 sm:py-16 lg:px-6 md:grid md:grid-cols-2">
@@ -218,96 +244,103 @@
  
 <!-- CARD CAROUSEL -->
 <section class="bg-white dark:bg-gray-900 py-12 px-4 relative select-none">
-  <div class="max-w-screen-xl mx-auto relative">
+<div class="w-full relative overflow-hidden">
 
     <!-- Carousel container -->
     <div id="carouselCards" class="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar transition-all duration-700 ease-in-out cursor-grab active:cursor-grabbing">
       
-      <!-- Card Example (repeat for all cards) -->
-      <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0">
-        <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image">
-        <div class="p-5">
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
-          <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
-          <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
-        </div>
+  <div class="pl-4 min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-2xl flex-shrink-0 overflow-hidden">
+      <div class="rounded-t-2xl overflow-hidden">
+      <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image"></div>
+      <div class="py-6 px-5">
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
+        <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
+        <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
       </div>
+    </div>
 
-     <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0">
-        <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image">
-        <div class="p-5">
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
-          <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
-          <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
-        </div>
+ <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-2xl flex-shrink-0 overflow-hidden">
+      <div class="rounded-t-2xl overflow-hidden">
+      <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image"></div>
+      <div class="py-6 px-5">
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
+        <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
+        <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
       </div>
+    </div>
 
-      <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0">
-        <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image">
-        <div class="p-5">
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
-          <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
-          <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
-        </div>
+<div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-2xl flex-shrink-0 overflow-hidden">
+      <div class="rounded-t-2xl overflow-hidden">
+      <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image"></div>
+      <div class="py-6 px-5">
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
+        <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
+        <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
       </div>
+    </div>
 
-      <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0">
-        <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image">
-        <div class="p-5">
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
-          <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
-          <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
-        </div>
+      <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-2xl flex-shrink-0 overflow-hidden">
+      <div class="rounded-t-2xl overflow-hidden">
+      <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image"></div>
+      <div class="py-6 px-5">
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
+        <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
+        <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
       </div>
+    </div>
 
-      <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0">
-        <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image">
-        <div class="p-5">
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
-          <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
-          <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
-        </div>
+    <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-2xl flex-shrink-0 overflow-hidden">
+      <div class="rounded-t-2xl overflow-hidden">
+      <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image"></div>
+      <div class="py-6 px-5">
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
+        <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
+        <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
       </div>
+    </div>
 
-      <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0">
-        <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image">
-        <div class="p-5">
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
-          <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
-          <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
-        </div>
+<div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-2xl flex-shrink-0 overflow-hidden">
+      <div class="rounded-t-2xl overflow-hidden">
+      <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image"></div>
+      <div class="py-6 px-5">
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
+        <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
+        <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
       </div>
+    </div>
 
-      <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-lg shadow overflow-hidden flex-shrink-0">
-        <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image">
-        <div class="p-5">
-          <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
-          <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
-          <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
-        </div>
+      <div class="pr-4 min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-2xl flex-shrink-0 overflow-hidden">
+      <div class="rounded-t-2xl overflow-hidden">
+      <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image"></div>
+      <div class="py-6 px-5">
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
+        <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
+        <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
       </div>
+    </div>
 
     </div>
     
-  <!-- Navigation buttons container BELOW carousel, aligned bottom right -->
-    <div class="flex justify-end mt-4 gap-3">
-      <!-- Prev Button (hidden initially) -->
-      <button id="prevArrow" class="hidden flex items-center justify-center h-10 w-10 rounded-full bg-white/30 dark:bg-gray-800/30 hover:bg-white/50 dark:hover:bg-gray-800/60 text-gray-800 dark:text-white focus:outline-none transition">
-        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-        </svg>
-        <span class="sr-only">Previous</span>
-      </button>
+<div class="flex justify-end mt-4 gap-3">
+  <!-- Prev Button -->
+ <button id="prevArrow"
+ class="h-10 w-10 flex items-center justify-center rounded-full bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-white focus:outline-none opacity-0 pointer-events-none transition-opacity duration-300">
+    <svg class="w-4 h-4 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
+      <path d="M7 1L3 5l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="sr-only">Previous</span>
+  </button>
 
-      <!-- Next Button -->
-      <button id="nextArrow" class="flex items-center justify-center h-10 w-10 rounded-full bg-white/30 dark:bg-gray-800/30 hover:bg-white/50 dark:hover:bg-gray-800/60 text-gray-800 dark:text-white focus:outline-none transition">
-        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-        </svg>
-        <span class="sr-only">Next</span>
-      </button>
-    </div>
-  </div>
+  <!-- Next Button -->
+  <button id="nextArrow"
+    class="h-10 w-10 flex items-center justify-center rounded-full bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-white focus:outline-none">
+    <svg class="w-4 h-4 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
+      <path d="M3 9l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="sr-only">Next</span>
+  </button>
+</div>
+
 
   <!-- Hide Scrollbar CSS -->
   <style>
