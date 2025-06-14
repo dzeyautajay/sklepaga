@@ -1,13 +1,13 @@
 //<!-- Drop Down on Nav Bar Script -->
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   const toggleButton = document.querySelector('[data-collapse-toggle="mega-menu-full"]');
   const menu = document.getElementById("mega-menu-full");
 
-  const icon = toggleButton.querySelector("svg");
-
   const overlay = document.createElement("div");
-  overlay.className =
-    "fixed inset-0 z-40 bg-black bg-opacity-50 backdrop-blur-[20px] opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out";
+  overlay.className = `
+    fixed inset-0 z-40 bg-black bg-opacity-50 backdrop-blur-[20px]
+    opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out
+  `;
   document.body.appendChild(overlay);
 
   let isMenuOpen = false;
@@ -16,87 +16,114 @@ document.addEventListener("DOMContentLoaded", function () {
     return window.innerWidth < 768;
   }
 
-  function setIcon(isOpen) {
-    icon.innerHTML = isOpen
-      ? `<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4L13 13M13 4L4 13" />` // X
-      : `<path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>`; // Hamburger
+  function animateMenuItemsIn() {
+    const items = menu.querySelectorAll("li, a, div");
+    items.forEach((item) => {
+      item.style.opacity = "0";
+      item.style.transform = "translateY(-10px)";
+      item.style.transition = "none";
+    });
+    void menu.offsetHeight;
+    items.forEach((item, index) => {
+      item.style.transition = `opacity 0.4s ease ${index * 0.05}s, transform 0.4s ease ${index * 0.05}s`;
+      item.style.opacity = "1";
+      item.style.transform = "translateY(0)";
+    });
   }
 
-  function openMenu() {
-    if (!isMobile()) return;
+  function resetMenuItems() {
+    const items = menu.querySelectorAll("li, a, div");
+    items.forEach((item) => {
+      item.style.opacity = "";
+      item.style.transform = "";
+      item.style.transition = "";
+    });
+  }
 
-    menu.classList.remove("max-h-0", "opacity-0", "pointer-events-none");
-    menu.classList.add("max-h-[1000px]", "opacity-100", "pointer-events-auto");
-
+  function showMenu() {
+    menu.classList.remove(
+      "hidden", "max-h-0", "opacity-0", "pointer-events-none", "scale-95", "translate-y-2"
+    );
+    menu.classList.add(
+      "block", "max-h-[1000px]", "opacity-100", "pointer-events-auto", "scale-100", "translate-y-0"
+    );
     overlay.classList.remove("opacity-0", "pointer-events-none");
     overlay.classList.add("opacity-100", "pointer-events-auto");
 
-    toggleButton.setAttribute("aria-expanded", "true");
-    setIcon(true);
+    animateMenuItemsIn();
     isMenuOpen = true;
   }
 
-  function closeMenu() {
-    if (!isMenuOpen) return;
-
-    menu.classList.add("max-h-0", "opacity-0", "pointer-events-none");
-    menu.classList.remove("max-h-[1000px]", "opacity-100", "pointer-events-auto");
-
+  function hideMenu() {
+    menu.classList.remove(
+      "block", "max-h-[1000px]", "opacity-100", "pointer-events-auto", "scale-100", "translate-y-0"
+    );
+    menu.classList.add(
+      "max-h-0", "opacity-0", "pointer-events-none", "scale-95", "translate-y-2"
+    );
     overlay.classList.add("opacity-0", "pointer-events-none");
     overlay.classList.remove("opacity-100", "pointer-events-auto");
 
-    toggleButton.setAttribute("aria-expanded", "false");
-    setIcon(false);
+    resetMenuItems();
     isMenuOpen = false;
   }
 
-  // Toggle by hamburger
-  toggleButton.addEventListener("click", function (e) {
+  toggleButton.addEventListener("click", (e) => {
     e.stopPropagation();
-    isMenuOpen ? closeMenu() : openMenu();
-  });
-
-  // On resize: reset if desktop
-  window.addEventListener("resize", function () {
-    if (!isMobile()) {
-      menu.classList.remove(
-        "max-h-0",
-        "opacity-0",
-        "pointer-events-none",
-        "max-h-[1000px]",
-        "opacity-100",
-        "pointer-events-auto"
-      );
-      overlay.classList.add("opacity-0", "pointer-events-none");
-      overlay.classList.remove("opacity-100", "pointer-events-auto");
-      isMenuOpen = false;
-      setIcon(false);
-    } else {
-      menu.classList.add(
-        "transition-all",
-        "duration-500",
-        "ease-in-out",
-        "overflow-hidden",
-        "max-h-0",
-        "opacity-0",
-        "pointer-events-none"
-      );
+    if (isMobile()) {
+      isMenuOpen ? hideMenu() : showMenu();
     }
   });
 
-  // Initial setup
-  if (isMobile()) {
-    menu.classList.add(
-      "transition-all",
-      "duration-500",
-      "ease-in-out",
-      "overflow-hidden",
-      "max-h-0",
-      "opacity-0",
-      "pointer-events-none"
-    );
-    setIcon(false);
+  function handleResize() {
+    if (isMenuOpen && isMobile()) {
+      toggleButton.click();
+    }
+
+    if (!isMobile()) {
+      menu.classList.remove(
+        "hidden", "max-h-0", "opacity-0", "pointer-events-none", "scale-95", "translate-y-2"
+      );
+      menu.classList.add(
+        "block", "opacity-100", "pointer-events-auto", "scale-100", "translate-y-0"
+      );
+      overlay.classList.add("opacity-0", "pointer-events-none");
+      overlay.classList.remove("opacity-100", "pointer-events-auto");
+
+      isMenuOpen = false;
+      resetMenuItems();
+    } else {
+      if (!isMenuOpen) {
+        menu.classList.remove(
+          "block", "max-h-[1000px]", "opacity-100", "pointer-events-auto", "scale-100", "translate-y-0"
+        );
+        menu.classList.add(
+          "transition-all", "duration-500", "ease-in-out", "overflow-hidden",
+          "max-h-0", "opacity-0", "pointer-events-none", "scale-95", "translate-y-2"
+        );
+        overlay.classList.add("opacity-0", "pointer-events-none");
+        overlay.classList.remove("opacity-100", "pointer-events-auto");
+        resetMenuItems();
+      }
+    }
   }
+
+  handleResize();
+  window.addEventListener("resize", handleResize);
+
+  // 🔻 New: click outside to close
+  document.addEventListener("click", (e) => {
+    if (isMobile() && isMenuOpen && !menu.contains(e.target) && !toggleButton.contains(e.target)) {
+      toggleButton.click();
+    }
+  });
+
+  // 🔻 New: scroll to close
+  window.addEventListener("scroll", () => {
+    if (isMobile() && isMenuOpen) {
+      toggleButton.click();
+    }
+  });
 });
 
 
@@ -187,80 +214,82 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // End of NAVIGATION
+const carousel = document.getElementById('carouselCards');
+const prevArrow = document.getElementById('prevArrow');
+const nextArrow = document.getElementById('nextArrow');
+const gap = 24;
 
-//<!-- Scroll and Drag Script -->
-    const carousel = document.getElementById('carouselCards');
-    const prevArrow = document.getElementById('prevArrow');
-    const nextArrow = document.getElementById('nextArrow');
+const getScrollStep = () => carousel.firstElementChild.offsetWidth + gap;
 
-    let scrollPos = 0;
-    const gap = 24;
+function updateArrowVisibility() {
+  const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+  const atStart = carousel.scrollLeft <= 5;
+  const atEnd = carousel.scrollLeft >= maxScroll - 5;
 
-    const getScrollStep = () => carousel.firstElementChild.offsetWidth + gap;
+  // Standard: Hide at start or end, hold layout
+  prevArrow.style.visibility = atStart ? 'hidden' : 'visible';
+  nextArrow.style.visibility = atEnd ? 'hidden' : 'visible';
 
-    // Button navigation
-    nextArrow.addEventListener('click', () => {
-      const step = getScrollStep();
-      carousel.scrollBy({ left: step, behavior: 'smooth' });
-      scrollPos += step;
-      prevArrow.classList.remove('hidden');
-    });
+  prevArrow.style.opacity = atStart ? '0' : '1';
+  nextArrow.style.opacity = atEnd ? '0' : '1';
 
-    prevArrow.addEventListener('click', () => {
-      const step = getScrollStep();
-      carousel.scrollBy({ left: -step, behavior: 'smooth' });
-      scrollPos -= step;
-      if (scrollPos <= 0) {
-        scrollPos = 0;
-        prevArrow.classList.add('hidden');
-      }
-    });
+  prevArrow.style.pointerEvents = atStart ? 'none' : 'auto';
+  nextArrow.style.pointerEvents = atEnd ? 'none' : 'auto';
+}
 
-    // Drag logic
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+// Navigation with delay for smooth scroll
+nextArrow.addEventListener('click', () => {
+  carousel.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+  setTimeout(updateArrowVisibility, 300); // slight delay to allow scroll update
+});
 
-    carousel.addEventListener('mousedown', (e) => {
-      isDown = true;
-      carousel.classList.add('cursor-grabbing');
-      startX = e.pageX - carousel.offsetLeft;
-      scrollLeft = carousel.scrollLeft;
-    });
+prevArrow.addEventListener('click', () => {
+  carousel.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+  setTimeout(updateArrowVisibility, 300);
+});
 
-    carousel.addEventListener('mouseleave', () => {
-      isDown = false;
-      carousel.classList.remove('cursor-grabbing');
-    });
+// Scroll and drag listeners
+carousel.addEventListener('scroll', updateArrowVisibility);
 
-    carousel.addEventListener('mouseup', () => {
-      isDown = false;
-      carousel.classList.remove('cursor-grabbing');
-    });
+let isDragging = false;
+let startX;
+let scrollStart;
 
-    carousel.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - carousel.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      carousel.scrollLeft = scrollLeft - walk;
-      prevArrow.classList.toggle('hidden', carousel.scrollLeft <= 0);
-    });
+function startDrag(x) {
+  isDragging = true;
+  startX = x;
+  scrollStart = carousel.scrollLeft;
+  carousel.style.cursor = 'grabbing';
+}
 
-    // Touch support
-    carousel.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX;
-      scrollLeft = carousel.scrollLeft;
-    });
+function stopDrag() {
+  isDragging = false;
+  carousel.style.cursor = 'grab';
+}
 
-    carousel.addEventListener('touchmove', (e) => {
-      const touchX = e.touches[0].clientX;
-      const delta = (touchX - startX) * 1.5;
-      carousel.scrollLeft = scrollLeft - delta;
-      prevArrow.classList.toggle('hidden', carousel.scrollLeft <= 0);
-    });
+function onDragMove(x) {
+  if (!isDragging) return;
+  const delta = (x - startX) * 1.5;
+  carousel.scrollLeft = scrollStart - delta;
+}
 
-    // Optional: Prevent text highlight during drag
-    document.addEventListener('selectstart', (e) => {
-      if (isDown) e.preventDefault();
-    });
+// Mouse events
+carousel.addEventListener('mousedown', (e) => startDrag(e.pageX));
+carousel.addEventListener('mouseup', stopDrag);
+carousel.addEventListener('mouseleave', stopDrag);
+carousel.addEventListener('mousemove', (e) => onDragMove(e.pageX));
+
+// Touch events
+carousel.addEventListener('touchstart', (e) => startDrag(e.touches[0].clientX));
+carousel.addEventListener('touchend', stopDrag);
+carousel.addEventListener('touchcancel', stopDrag);
+carousel.addEventListener('touchmove', (e) => onDragMove(e.touches[0].clientX));
+
+// Prevent selection during drag
+document.addEventListener('selectstart', (e) => {
+  if (isDragging) e.preventDefault();
+});
+
+// Initial state
+carousel.style.cursor = 'grab';
+updateArrowVisibility();
