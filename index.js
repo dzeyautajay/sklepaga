@@ -1,4 +1,3 @@
-//<!-- Drop Down on Nav Bar Script -->
 document.addEventListener("DOMContentLoaded", () => {
   const toggleButton = document.querySelector('[data-collapse-toggle="mega-menu-full"]');
   const menu = document.getElementById("mega-menu-full");
@@ -214,19 +213,24 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // End of NAVIGATION
+
 const carousel = document.getElementById('carouselCards');
 const prevArrow = document.getElementById('prevArrow');
 const nextArrow = document.getElementById('nextArrow');
 const gap = 24;
 
-const getScrollStep = () => carousel.firstElementChild.offsetWidth + gap;
+// Get the width of one full card including gap
+const getScrollStep = () => {
+  const card = carousel.querySelector(':scope > *');
+  return card ? card.offsetWidth + gap : 0;
+};
 
+// Update visibility and interactivity of arrows
 function updateArrowVisibility() {
   const maxScroll = carousel.scrollWidth - carousel.clientWidth;
   const atStart = carousel.scrollLeft <= 5;
   const atEnd = carousel.scrollLeft >= maxScroll - 5;
 
-  // Standard: Hide at start or end, hold layout
   prevArrow.style.visibility = atStart ? 'hidden' : 'visible';
   nextArrow.style.visibility = atEnd ? 'hidden' : 'visible';
 
@@ -237,55 +241,67 @@ function updateArrowVisibility() {
   nextArrow.style.pointerEvents = atEnd ? 'none' : 'auto';
 }
 
-// Navigation with delay for smooth scroll
+// Scroll behavior for arrows (smooth)
 nextArrow.addEventListener('click', () => {
   carousel.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
-  setTimeout(updateArrowVisibility, 300); // slight delay to allow scroll update
+  setTimeout(updateArrowVisibility, 350);
 });
 
 prevArrow.addEventListener('click', () => {
   carousel.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
-  setTimeout(updateArrowVisibility, 300);
+  setTimeout(updateArrowVisibility, 350);
 });
 
-// Scroll and drag listeners
-carousel.addEventListener('scroll', updateArrowVisibility);
-
+// Drag-to-scroll (no smooth behavior to avoid stutter)
 let isDragging = false;
-let startX;
-let scrollStart;
+let startX = 0;
+let scrollStart = 0;
 
-function startDrag(x) {
+carousel.addEventListener('mousedown', (e) => {
   isDragging = true;
-  startX = x;
+  startX = e.pageX;
   scrollStart = carousel.scrollLeft;
   carousel.style.cursor = 'grabbing';
-}
+});
 
-function stopDrag() {
+carousel.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  const delta = (e.pageX - startX) * 1.5;
+  carousel.scrollLeft = scrollStart - delta;
+});
+
+carousel.addEventListener('mouseup', () => {
   isDragging = false;
   carousel.style.cursor = 'grab';
-}
+});
 
-function onDragMove(x) {
+carousel.addEventListener('mouseleave', () => {
+  isDragging = false;
+  carousel.style.cursor = 'grab';
+});
+
+// Touch equivalent
+carousel.addEventListener('touchstart', (e) => {
+  isDragging = true;
+  startX = e.touches[0].clientX;
+  scrollStart = carousel.scrollLeft;
+});
+
+carousel.addEventListener('touchmove', (e) => {
   if (!isDragging) return;
-  const delta = (x - startX) * 1.5;
+  const delta = (e.touches[0].clientX - startX) * 1.5;
   carousel.scrollLeft = scrollStart - delta;
-}
+});
 
-// Mouse events
-carousel.addEventListener('mousedown', (e) => startDrag(e.pageX));
-carousel.addEventListener('mouseup', stopDrag);
-carousel.addEventListener('mouseleave', stopDrag);
-carousel.addEventListener('mousemove', (e) => onDragMove(e.pageX));
+carousel.addEventListener('touchend', () => {
+  isDragging = false;
+});
 
-// Touch events
-carousel.addEventListener('touchstart', (e) => startDrag(e.touches[0].clientX));
-carousel.addEventListener('touchend', stopDrag);
-carousel.addEventListener('touchcancel', stopDrag);
-carousel.addEventListener('touchmove', (e) => onDragMove(e.touches[0].clientX));
+carousel.addEventListener('touchcancel', () => {
+  isDragging = false;
+});
 
-// Prevent selection during drag
+// Prevent text/image selection during drag
 document.addEventListener('selectstart', (e) => {
   if (isDragging) e.preventDefault();
 });
@@ -293,3 +309,6 @@ document.addEventListener('selectstart', (e) => {
 // Initial state
 carousel.style.cursor = 'grab';
 updateArrowVisibility();
+
+// Update arrows on resize or layout shift
+window.addEventListener('resize', updateArrowVisibility);
