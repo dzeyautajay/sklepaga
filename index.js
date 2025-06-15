@@ -417,7 +417,7 @@ updateArrowVisibility();
         });
       }
     });
-
+    });
 
    // IMAGES
 document.addEventListener("DOMContentLoaded", () => {
