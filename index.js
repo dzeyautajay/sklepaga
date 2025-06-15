@@ -418,11 +418,6 @@ updateArrowVisibility();
       }
     });
 
-    // Re-apply on resize
-    window.addEventListener("resize", () => {
-      location.reload(); // simplest way to reset listeners properly
-    });
-  });
 
    // IMAGES
 document.addEventListener("DOMContentLoaded", () => {
