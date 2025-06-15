@@ -425,20 +425,31 @@ updateArrowVisibility();
   });
 
    // IMAGES
- document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const images = document.querySelectorAll('.zoom-img');
+
+    // Check if the device supports hover (usually desktop)
+    const supportsHover = window.matchMedia('(hover: hover)').matches;
 
     images.forEach(img => {
       img.style.transition = 'transform 0.3s ease';
 
-      img.addEventListener('mouseenter', () => {
-        img.style.transform = 'scale(1.05)';
-        img.style.zIndex = '1';
-      });
+      if (supportsHover) {
+        img.addEventListener('mouseenter', () => {
+          img.style.transform = 'scale(1.05)';
+          img.style.zIndex = '1';
+        });
 
-      img.addEventListener('mouseleave', () => {
-        img.style.transform = 'scale(1)';
-        img.style.zIndex = '0';
+        img.addEventListener('mouseleave', () => {
+          img.style.transform = 'scale(1)';
+          img.style.zIndex = '0';
+        });
+      }
+
+      // Always allow click/tap
+      img.addEventListener('click', () => {
+        // Add your click functionality here, e.g. open modal, lightbox, etc.
+        console.log('Image clicked:', img.src);
       });
     });
   });
