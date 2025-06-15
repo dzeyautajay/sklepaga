@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Responsive Nav</title>
+   <link rel="stylesheet" href="index.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.js"></script>
 </head>
@@ -14,7 +15,7 @@
   <div class="flex flex-wrap items-center justify-between mx-auto max-w-screen-xl p-4">
     <!-- Logo -->
     <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo" />
+      <img src="images\sample-image.jpeg" class="h-8" alt="Flowbite Logo" />
       <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
     </a>
 
@@ -52,6 +53,7 @@
                 d="m1 1 4 4 4-4" />
             </svg>
           </button>
+          
         </li>
         <li>
           <a href="#"
@@ -128,7 +130,7 @@
   <div class="relative h-[60vh] overflow-hidden rounded-lg">
     <!-- Item 1 -->
     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-      <img src="images/images.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+      <img src="images\sample-image.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
     </div>
     <!-- Item 2 -->
     <div class="hidden duration-700 ease-in-out" data-carousel-item>
@@ -136,7 +138,7 @@
     </div>
     <!-- Item 3 -->
     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-      <img src="images/images.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+      <img src="images\sample-image.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
     </div>
     <!-- Item 4 -->
     <div class="hidden duration-700 ease-in-out" data-carousel-item>
@@ -144,7 +146,7 @@
     </div>
     <!-- Item 5 -->
     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-      <img src="images/images.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+      <img src="images\sample-image.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
     </div>
   </div>
 
@@ -201,42 +203,20 @@
   </div>
 </section>
 
-<!-- IMAGE WITH DESCRIPTION -->
+<!-- IMAGE WITH DESCRIPTION 1-->
 
-<!-- IMAGE WITH DESCRIPTION #1 -->
- <section class="bg-white dark:bg-gray-900">
-    <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
-        <img class="w-full dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image">
-        <img class="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image">
-        <div class="mt-4 md:mt-0">
-             <h1 class="mb-3 text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-4xl">
-        Save $500 today on your purchase <br />
-        of a new iMac computer.
-      </h1>
-            <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.</p>
-            <a href="#" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
-            Get started
-            <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-            </svg>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- IMAGE WITH DESCRIPTION #2 -->
 <section class="bg-white dark:bg-gray-900">
-  <div class="gap-8 items-center py-8 px-4 mx-auto max-w-screen-xl xl:gap-16 sm:py-16 lg:px-6 md:grid md:grid-cols-2">
+  <div class="gap-8 items-center py-8 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16">
     
-    <!-- IMAGE (appears on top on small screens) -->
-    <div class="order-1 md:order-2">
-      <img class="w-full dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup.svg" alt="dashboard image">
+    <!-- IMAGE -->
+    <div>
+      <img class="w-full dark:hidden" src="images\sample-image.jpeg" alt="dashboard image">
       <img class="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image">
     </div>
 
-    <!-- TEXT (appears below on small screens, left on desktop) -->
-    <div class="order-2 md:order-1 mt-4 md:mt-0">
-       <h1 class="mb-3 text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-4xl">
+    <!-- TEXT with margin-right on mobile -->
+    <div class="mt-4 md:mt-0 px-4 sm:px-6">
+      <h1 class="mb-3 text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-4xl">
         Save $500 today on your purchase <br />
         of a new iMac computer.
       </h1>
@@ -245,14 +225,46 @@
       </p>
       <a href="#" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
         Get started
-        <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+        <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
         </svg>
       </a>
     </div>
 
   </div>
 </section>
+
+
+<!-- IMAGE WITH DESCRIPTION #2 -->
+<section class="bg-white dark:bg-gray-900">
+  <div class="gap-8 items-center py-8 mx-auto max-w-screen-xl xl:gap-16 sm:py-16 md:grid md:grid-cols-2">
+
+    <!-- IMAGE -->
+    <div class="order-1 md:order-2">
+      <img class="w-full dark:hidden" src="images\sample-image.jpeg" alt="dashboard image">
+      <img class="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image">
+    </div>
+
+    <!-- TEXT with margin-left on mobile -->
+    <div class="order-2 md:order-1 mt-4 md:mt-0 px-4 sm:px-6">
+      <h1 class="mb-3 text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-4xl">
+        Save $500 today on your purchase <br />
+        of a new iMac computer.
+      </h1>
+      <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">
+        Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.
+      </p>
+      <a href="#" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+        Get started
+        <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
  
 <!-- CARD CAROUSEL -->
 <section class="bg-white dark:bg-gray-900 py-12 px-4 relative select-none">
@@ -260,76 +272,181 @@
 
     <!-- Carousel container -->
     <div id="carouselCards" class="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar transition-all duration-700 ease-in-out cursor-grab active:cursor-grabbing">
-      
-<div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-2xl flex-shrink-0 overflow-hidden">
-      <div class="rounded-t-2xl overflow-hidden">
-      <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image"></div>
-      <div class="py-6 px-5">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
-        <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
-        <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
-      </div>
+<!-- Card 1 -->    
+<a href="#" class="block max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700">
+    <!-- Image wrapper with overflow-hidden to contain zoom -->
+    <div class="relative overflow-hidden">
+        <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" />
     </div>
+    <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Noteworthy technology acquisitions 2021
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </div>
+    </div>
+</a>
 
- <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-2xl flex-shrink-0 overflow-hidden">
-      <div class="rounded-t-2xl overflow-hidden">
-      <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image"></div>
-      <div class="py-6 px-5">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
-        <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
-        <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
-      </div>
+<!-- Card 2 -->    
+<a href="#" class="block max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700">
+    <!-- Image wrapper with overflow-hidden to contain zoom -->
+    <div class="relative overflow-hidden">
+        <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" />
     </div>
+    <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Noteworthy technology acquisitions 2021
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </div>
+    </div>
+</a>
 
-<div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-2xl flex-shrink-0 overflow-hidden">
-      <div class="rounded-t-2xl overflow-hidden">
-      <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image"></div>
-      <div class="py-6 px-5">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
-        <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
-        <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
-      </div>
+<!-- Card 3 -->    
+<a href="#" class="block max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700">
+    <!-- Image wrapper with overflow-hidden to contain zoom -->
+    <div class="relative overflow-hidden">
+        <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" />
     </div>
+    <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Noteworthy technology acquisitions 2021
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </div>
+    </div>
+</a>
 
-      <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-2xl flex-shrink-0 overflow-hidden">
-      <div class="rounded-t-2xl overflow-hidden">
-      <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image"></div>
-      <div class="py-6 px-5">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
-        <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
-        <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
-      </div>
+<!-- Card 4 -->    
+<a href="#" class="block max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700">
+    <!-- Image wrapper with overflow-hidden to contain zoom -->
+    <div class="relative overflow-hidden">
+        <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" />
     </div>
+    <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Noteworthy technology acquisitions 2021
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </div>
+    </div>
+</a>
 
-    <div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-2xl flex-shrink-0 overflow-hidden">
-      <div class="rounded-t-2xl overflow-hidden">
-      <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image"></div>
-      <div class="py-6 px-5">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
-        <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
-        <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
-      </div>
+  <!-- Card 5 -->    
+<a href="#" class="block max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700">
+    <!-- Image wrapper with overflow-hidden to contain zoom -->
+    <div class="relative overflow-hidden">
+        <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" />
     </div>
+    <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Noteworthy technology acquisitions 2021
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </div>
+    </div>
+</a>
 
-<div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-2xl flex-shrink-0 overflow-hidden">
-      <div class="rounded-t-2xl overflow-hidden">
-      <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image"></div>
-      <div class="py-6 px-5">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
-        <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
-        <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
-      </div>
+ <!-- Card 6 -->    
+<a href="#" class="block max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700">
+    <!-- Image wrapper with overflow-hidden to contain zoom -->
+    <div class="relative overflow-hidden">
+        <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" />
     </div>
+    <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Noteworthy technology acquisitions 2021
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </div>
+    </div>
+</a>
 
-<div class="min-w-[90%] sm:min-w-[85%] md:min-w-[45%] lg:min-w-[30%] xl:min-w-[30%] bg-gray-50 dark:bg-gray-800 rounded-2xl flex-shrink-0 overflow-hidden">
-      <div class="rounded-t-2xl overflow-hidden">
-      <img class="w-full h-56 object-cover" src="images/images.png" alt="Card Image"></div>
-      <div class="py-6 px-5">
-        <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">Card Title</h3>
-        <p class="text-gray-500 dark:text-gray-400 mb-3">Card description goes here.</p>
-        <a href="#" class="text-blue-600 underline hover:no-underline dark:text-blue-400">Learn more</a>
-      </div>
+ <!-- Card 7 -->    
+<a href="#" class="block max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700">
+    <!-- Image wrapper with overflow-hidden to contain zoom -->
+    <div class="relative overflow-hidden">
+        <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" />
     </div>
+    <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Noteworthy technology acquisitions 2021
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </div>
+    </div>
+</a>
+
+ <!-- Card 8 -->    
+<a href="#" class="block max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700">
+    <!-- Image wrapper with overflow-hidden to contain zoom -->
+    <div class="relative overflow-hidden">
+        <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" />
+    </div>
+    <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Noteworthy technology acquisitions 2021
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </div>
+    </div>
+</a>
 
     </div>
     
@@ -367,24 +484,85 @@
 </section>
 
 
-<section class="bg-white px-4 py-8 antialiased dark:bg-gray-900 md:py-16">
-  <div class="mx-auto grid max-w-screen-xl rounded-lg bg-gray-50 p-4 dark:bg-gray-800 md:p-8 lg:grid-cols-12 lg:gap-8 lg:p-16 xl:gap-16">
-    <div class="lg:col-span-5 lg:mt-0">
-      <a href="#">
-        <img class="mb-4 h-56 w-56 dark:hidden sm:h-96 sm:w-96 md:h-full md:w-full" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-components.svg" alt="peripherals" />
-        <img class="mb-4 hidden dark:block md:h-full" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-components-dark.svg" alt="peripherals" />
-      </a>
+<div class="px-4 md:px-8">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="grid gap-4">
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt=""></a>
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt=""></a>
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt=""></a>
     </div>
-    <div class="me-auto place-self-center lg:col-span-7">
-      <h1 class="mb-3 text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-4xl">
-        Save $500 today on your purchase <br />
-        of a new iMac computer.
-      </h1>
-      <p class="mb-6 text-gray-500 dark:text-gray-400">Reserve your new Apple iMac 27” today and enjoy exclusive savings with qualified activation. Pre-order now to secure your discount.</p>
-      <a href="#" class="inline-flex items-center justify-center rounded-lg bg-primary-700 px-5 py-3 text-center text-base font-medium text-white hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900"> Pre-order now </a>
+    <div class="grid gap-4">
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt=""></a>
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt=""></a>
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt=""></a>
+    </div>
+    <div class="grid gap-4">
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt=""></a>
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt=""></a>
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt=""></a>
+    </div>
+    <div class="grid gap-4">
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt=""></a>
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt=""></a>
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt=""></a>
+    </div>
+  </div>
+</div>
+
+
+
+<section class="bg-white px-4 py-8 antialiased dark:bg-gray-900 md:py-16">
+  <div class="max-w-screen-xl mx-auto">
+<div id="accordion" class="divide-y-2 divide-gray-300 dark:divide-gray-700">
+
+      <!-- Accordion Item -->
+      <div class="accordion-item overflow-hidden transition-all duration-500 ease-in-out">
+        <button class="accordion-header flex justify-between items-center w-full py-5 text-left text-gray-900 dark:text-white text-2xl font-bold tracking-tight focus:outline-none">
+          <span>What is Apple News?</span>
+          <svg class="w-6 h-6 transition-transform duration-300 text-gray-900 dark:text-white stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="accordion-body max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out text-gray-600 dark:text-gray-300">
+          <div class="pb-5">
+           Apple News and Apple News+ both feature the world’s best journalism from trusted sources, curated by human editors and personalized to your interests. With Apple News+ you unlock access to premium content from hundreds of magazines and leading local, national, and international newspapers, cover-to-cover magazine issues you can read online or off, and audio stories — professionally narrated versions of some of the best stories available in Apple News+.
+          </div>
+        </div>
+      </div>
+    
+      <div class="accordion-item overflow-hidden transition-all duration-500 ease-in-out">
+        <button class="accordion-header flex justify-between items-center w-full py-5 text-left text-gray-900 dark:text-white text-2xl font-bold tracking-tight focus:outline-none">
+          <span>How is Apple News+ different from Apple News?</span>
+          <svg class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="accordion-body max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out text-gray-600 dark:text-gray-300">
+          <div class="pb-5">
+            Apple News+ is a premium subscription that includes access to hundreds of magazines and newspapers, plus exclusive content.
+          </div>
+        </div>
+      </div>
+
+       <div class="accordion-item overflow-hidden transition-all duration-500 ease-in-out">
+        <button class="accordion-header flex justify-between items-center w-full py-5 text-left text-gray-900 dark:text-white text-2xl font-bold tracking-tight focus:outline-none">
+          <span>How is Apple News+ different from Apple News?</span>
+          <svg class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="accordion-body max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out text-gray-600 dark:text-gray-300">
+          <div class="pb-5">
+            Apple News+ is a premium subscription that includes access to hundreds of magazines and newspapers, plus exclusive content.
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
+
 
 </body>
 <script src="index.js"></script>
