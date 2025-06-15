@@ -117,42 +117,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // 🔻 New: scroll to close
-  window.addEventListener("scroll", () => {
-    if (isMobile() && isMenuOpen) {
-      toggleButton.click();
-    }
-  });
 });
 
 
-// Dropdown Menu
+  // DROPDOWN
 document.addEventListener("DOMContentLoaded", function () {
   const dropdownButton = document.getElementById("mega-menu-full-dropdown-button");
   const dropdownMenu = document.getElementById("mega-menu-full-dropdown");
+  const dropdownItems = dropdownMenu.querySelectorAll(".dropdown-item");
   let isOpen = false;
+  let currentMode = null; // 'click' or 'hover'
 
+  // Create and append overlay
   const overlay = document.createElement("div");
   overlay.className =
     "fixed inset-0 z-40 bg-black/30 backdrop-blur-[20px] opacity-0 pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]";
   document.body.appendChild(overlay);
 
-  const dropdownItems = dropdownMenu.querySelectorAll(".dropdown-item");
-
-  // Add transition classes to dropdown container
+  // Initialize menu
   dropdownMenu.classList.add(
-    "transition-all", 
-    "duration-700", 
-    "ease-[cubic-bezier(0.4,0,0.2,1)]", 
+    "transition-all",
+    "duration-700",
+    "ease-[cubic-bezier(0.4,0,0.2,1)]",
     "overflow-hidden",
-    "transform", 
-    "max-h-0", 
-    "opacity-0", 
-    "pointer-events-none", 
+    "transform",
+    "max-h-0",
+    "opacity-0",
+    "pointer-events-none",
     "translate-y-[-10px]"
   );
 
-  // Hide items initially
   dropdownItems.forEach((item) => {
     item.classList.add("opacity-0", "translate-y-2", "transition-all", "duration-500");
   });
@@ -166,13 +160,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     isOpen = true;
 
-    // Animate items after dropdown opens (700ms delay)
     setTimeout(() => {
       dropdownItems.forEach((item, index) => {
         setTimeout(() => {
           item.classList.remove("opacity-0", "translate-y-2");
           item.classList.add("opacity-100", "translate-y-0");
-        }, index * 100); // stagger effect
+        }, index * 100);
       });
     }, 700);
   }
@@ -192,123 +185,289 @@ document.addEventListener("DOMContentLoaded", function () {
     isOpen = false;
   }
 
-  dropdownButton.addEventListener("click", function (e) {
-    e.stopPropagation();
-    isOpen ? closeDropdown() : openDropdown();
-  });
-
-  document.addEventListener("click", function (e) {
-    if (isOpen && !dropdownMenu.contains(e.target) && !dropdownButton.contains(e.target)) {
+  // Store references to event handlers so we can remove them
+  const handlers = {
+    buttonClick: () => {
+      isOpen ? closeDropdown() : openDropdown();
+    },
+    overlayClick: () => {
       closeDropdown();
+    },
+    buttonEnter: () => {
+      openDropdown();
+    },
+    buttonLeave: () => {
+      setTimeout(() => {
+        if (!dropdownMenu.matches(":hover")) closeDropdown();
+      }, 200);
+    },
+    menuLeave: () => {
+      setTimeout(() => {
+        if (!dropdownButton.matches(":hover")) closeDropdown();
+      }, 200);
+    },
+    menuEnter: () => {
+      openDropdown();
+    },
+  };
+
+  function removeAllListeners() {
+    dropdownButton.removeEventListener("click", handlers.buttonClick);
+    overlay.removeEventListener("click", handlers.overlayClick);
+
+    dropdownButton.removeEventListener("mouseenter", handlers.buttonEnter);
+    dropdownButton.removeEventListener("mouseleave", handlers.buttonLeave);
+    dropdownMenu.removeEventListener("mouseenter", handlers.menuEnter);
+    dropdownMenu.removeEventListener("mouseleave", handlers.menuLeave);
+    overlay.removeEventListener("mouseenter", closeDropdown);
+  }
+
+  function setupClickMode() {
+    if (currentMode === "click") return;
+    removeAllListeners();
+
+    dropdownButton.addEventListener("click", handlers.buttonClick);
+    overlay.addEventListener("click", handlers.overlayClick);
+
+    currentMode = "click";
+  }
+
+  function setupHoverMode() {
+    if (currentMode === "hover") return;
+    removeAllListeners();
+
+    dropdownButton.addEventListener("mouseenter", handlers.buttonEnter);
+    dropdownButton.addEventListener("mouseleave", handlers.buttonLeave);
+    dropdownMenu.addEventListener("mouseenter", handlers.menuEnter);
+    dropdownMenu.addEventListener("mouseleave", handlers.menuLeave);
+    overlay.addEventListener("mouseenter", closeDropdown);
+
+    currentMode = "hover";
+  }
+
+  function applyListenersBasedOnScreenSize() {
+    if (window.innerWidth >= 1024) {
+      setupHoverMode();
+    } else {
+      setupClickMode();
     }
-  });
+  }
 
-  window.addEventListener("scroll", function () {
-    if (isOpen) closeDropdown();
-  });
+  applyListenersBasedOnScreenSize();
 
-  overlay.addEventListener("click", function () {
-    closeDropdown();
+  window.addEventListener("resize", () => {
+    applyListenersBasedOnScreenSize();
   });
 });
 
-// End of NAVIGATION
 
+// End of NAVIGATION
 const carousel = document.getElementById('carouselCards');
 const prevArrow = document.getElementById('prevArrow');
 const nextArrow = document.getElementById('nextArrow');
 const gap = 24;
 
-// Get the width of one full card including gap
-const getScrollStep = () => {
-  const card = carousel.querySelector(':scope > *');
-  return card ? card.offsetWidth + gap : 0;
-};
+// Get all direct children (cards)
+const getCards = () => Array.from(carousel.querySelectorAll(':scope > *'));
 
-// Update visibility and interactivity of arrows
-function updateArrowVisibility() {
-  const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-  const atStart = carousel.scrollLeft <= 5;
-  const atEnd = carousel.scrollLeft >= maxScroll - 5;
+// Center a card by index
+function scrollToCard(index) {
+  const cards = getCards();
+  if (index < 0 || index >= cards.length) return;
 
-  prevArrow.style.visibility = atStart ? 'hidden' : 'visible';
-  nextArrow.style.visibility = atEnd ? 'hidden' : 'visible';
+  const card = cards[index];
+  const cardLeft = card.offsetLeft;
+  const cardWidth = card.offsetWidth;
 
-  prevArrow.style.opacity = atStart ? '0' : '1';
-  nextArrow.style.opacity = atEnd ? '0' : '1';
+  const containerCenter = carousel.clientWidth / 2;
+  const scrollLeft = cardLeft - containerCenter + cardWidth / 2;
 
-  prevArrow.style.pointerEvents = atStart ? 'none' : 'auto';
-  nextArrow.style.pointerEvents = atEnd ? 'none' : 'auto';
+  carousel.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+
+  setTimeout(updateArrowVisibility, 350); // wait for scroll to complete
 }
 
-// Scroll behavior for arrows (smooth)
+// Find the index of the closest card to the center of the viewport
+function getCenteredCardIndex() {
+  const cards = getCards();
+  const scrollCenter = carousel.scrollLeft + carousel.clientWidth / 2;
+
+  let closestIndex = 0;
+  let closestDistance = Infinity;
+
+  cards.forEach((card, index) => {
+    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+    const distance = Math.abs(scrollCenter - cardCenter);
+    if (distance < closestDistance) {
+      closestDistance = distance;
+      closestIndex = index;
+    }
+  });
+
+  return closestIndex;
+}
+
+// Arrow button events
 nextArrow.addEventListener('click', () => {
-  carousel.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
-  setTimeout(updateArrowVisibility, 350);
+  const currentIndex = getCenteredCardIndex();
+  scrollToCard(currentIndex + 1);
 });
 
 prevArrow.addEventListener('click', () => {
-  carousel.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
-  setTimeout(updateArrowVisibility, 350);
+  const currentIndex = getCenteredCardIndex();
+  scrollToCard(currentIndex - 1);
 });
 
-// Drag-to-scroll (no smooth behavior to avoid stutter)
-let isDragging = false;
-let startX = 0;
-let scrollStart = 0;
+// Update arrows based on visibility of first and last card
+function updateArrowVisibility() {
+  const cards = getCards();
+  if (!cards.length) return;
 
-carousel.addEventListener('mousedown', (e) => {
-  isDragging = true;
-  startX = e.pageX;
-  scrollStart = carousel.scrollLeft;
-  carousel.style.cursor = 'grabbing';
-});
+  const firstCard = cards[0];
+  const lastCard = cards[cards.length - 1];
+  const carouselRect = carousel.getBoundingClientRect();
+  const firstRect = firstCard.getBoundingClientRect();
+  const lastRect = lastCard.getBoundingClientRect();
 
-carousel.addEventListener('mousemove', (e) => {
-  if (!isDragging) return;
-  const delta = (e.pageX - startX) * 1.5;
-  carousel.scrollLeft = scrollStart - delta;
-});
+  const buffer = 1; // prevent subpixel rounding issues
 
-carousel.addEventListener('mouseup', () => {
-  isDragging = false;
-  carousel.style.cursor = 'grab';
-});
+  const isFirstFullyVisible =
+    firstRect.left >= carouselRect.left - buffer &&
+    firstRect.right <= carouselRect.right + buffer;
 
-carousel.addEventListener('mouseleave', () => {
-  isDragging = false;
-  carousel.style.cursor = 'grab';
-});
+  const isLastFullyVisible =
+    lastRect.right <= carouselRect.right + buffer &&
+    lastRect.left >= carouselRect.left - buffer;
 
-// Touch equivalent
-carousel.addEventListener('touchstart', (e) => {
-  isDragging = true;
-  startX = e.touches[0].clientX;
-  scrollStart = carousel.scrollLeft;
-});
+  prevArrow.style.visibility = isFirstFullyVisible ? 'hidden' : 'visible';
+  nextArrow.style.visibility = isLastFullyVisible ? 'hidden' : 'visible';
 
-carousel.addEventListener('touchmove', (e) => {
-  if (!isDragging) return;
-  const delta = (e.touches[0].clientX - startX) * 1.5;
-  carousel.scrollLeft = scrollStart - delta;
-});
+  prevArrow.style.opacity = isFirstFullyVisible ? '0' : '1';
+  nextArrow.style.opacity = isLastFullyVisible ? '0' : '1';
 
-carousel.addEventListener('touchend', () => {
-  isDragging = false;
-});
+  prevArrow.style.pointerEvents = isFirstFullyVisible ? 'none' : 'auto';
+  nextArrow.style.pointerEvents = isLastFullyVisible ? 'none' : 'auto';
+}
 
-carousel.addEventListener('touchcancel', () => {
-  isDragging = false;
-});
-
-// Prevent text/image selection during drag
-document.addEventListener('selectstart', (e) => {
-  if (isDragging) e.preventDefault();
-});
-
-// Initial state
+// Cursor style
 carousel.style.cursor = 'grab';
+
+// Events to update arrow visibility
+carousel.addEventListener('scroll', updateArrowVisibility);
+window.addEventListener('resize', updateArrowVisibility);
+
+// Init
 updateArrowVisibility();
 
-// Update arrows on resize or layout shift
-window.addEventListener('resize', updateArrowVisibility);
+// ========== ZOOM-IN EFFECT ==========
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const images = document.querySelectorAll(".zoom-img");
+    const isMobile = window.innerWidth < 1024;
+    let currentlyZoomedCard = null;
+
+    images.forEach((img) => {
+      img.style.transition = "transform 0.4s ease-in-out";
+      img.style.transform = "scale(1)";
+      const card = img.closest(".max-w-sm");
+
+      if (!card) return;
+
+      if (isMobile) {
+        // Click-to-zoom for mobile
+        card.onclick = () => {
+          // Zoom out previous if different
+          if (currentlyZoomedCard && currentlyZoomedCard !== card) {
+            const prevImg = currentlyZoomedCard.querySelector(".zoom-img");
+            if (prevImg) prevImg.style.transform = "scale(1)";
+          }
+
+          if (currentlyZoomedCard === card) {
+            img.style.transform = "scale(1)";
+            currentlyZoomedCard = null;
+          } else {
+            img.style.transform = "scale(1.1)";
+            currentlyZoomedCard = card;
+          }
+        };
+
+        // Tap outside to zoom out
+        document.addEventListener(
+          "click",
+          (e) => {
+            if (
+              currentlyZoomedCard &&
+              !currentlyZoomedCard.contains(e.target)
+            ) {
+              const zoomedImg = currentlyZoomedCard.querySelector(".zoom-img");
+              if (zoomedImg) zoomedImg.style.transform = "scale(1)";
+              currentlyZoomedCard = null;
+            }
+          },
+          true
+        );
+      } else {
+        // Hover-zoom for desktop
+        card.onclick = null;
+        img.addEventListener("mouseenter", () => {
+          img.style.transform = "scale(1.05)";
+        });
+        img.addEventListener("mouseleave", () => {
+          img.style.transform = "scale(1)";
+        });
+      }
+    });
+
+    // Re-apply on resize
+    window.addEventListener("resize", () => {
+      location.reload(); // simplest way to reset listeners properly
+    });
+  });
+
+   // IMAGES
+ document.addEventListener("DOMContentLoaded", () => {
+    const images = document.querySelectorAll('.zoom-img');
+
+    images.forEach(img => {
+      img.style.transition = 'transform 0.3s ease';
+
+      img.addEventListener('mouseenter', () => {
+        img.style.transform = 'scale(1.05)';
+        img.style.zIndex = '1';
+      });
+
+      img.addEventListener('mouseleave', () => {
+        img.style.transform = 'scale(1)';
+        img.style.zIndex = '0';
+      });
+    });
+  });
+
+
+
+
+   // ACCORDION
+  document.querySelectorAll('#accordion .accordion-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const body = header.nextElementSibling;
+      const icon = header.querySelector('svg');
+
+      const isOpen = body.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('#accordion .accordion-body').forEach(b => {
+        b.classList.remove('open');
+        b.style.maxHeight = null;
+        b.style.opacity = 0;
+        b.previousElementSibling.querySelector('svg').classList.remove('rotate-180');
+      });
+
+      // Open current if it was closed
+      if (!isOpen) {
+        body.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + "px";
+        body.style.opacity = 1;
+        icon.classList.add('rotate-180');
+      }
+    });
+  });
