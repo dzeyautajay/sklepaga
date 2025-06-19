@@ -1,84 +1,60 @@
-* {
-    box-sizing: border-box;
+/* NAVBAR */
+.submenu-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  max-height: 0;
+  transform: translateY(-10px);
+  opacity: 1;
+  pointer-events: none;
+  transition: max-height 0.4s ease, transform 0.3s ease;
+  z-index: 40;
+
+  /* ✨ Add these lines */
+  border-top: none;
+  border-bottom: none;
+  outline: none;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f0f0f0;
+
+.submenu-dropdown.active {
+  max-height: 500px;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
-.carousel {
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    margin: 50px auto;
-    overflow: hidden;
+.dropdown-item {
+  opacity: 0;
+  transform: translateY(1rem);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
 }
 
-.carousel-viewport {
-    overflow: hidden;
-    width: 100%;
-    height: 400px;
+/* Keep blue text color on active top-level menu item */
+[data-menu].active-menu > a {
+  color: #2563eb; /* Tailwind's blue-600 */
 }
 
-.carousel-track {
-    display: flex;
-    transition: transform 0.6s ease-in-out;
-    will-change: transform;
+[data-menu].active-menu > a:hover {
+  color: #1d4ed8; /* Slightly darker blue on hover */
 }
 
-.carousel-item {
-    flex: 0 0 100%;
-    height: 400px;
+
+
+#carouselCards {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory; /* Optional for snapping */
+  gap: 24px;
+  cursor: grab;
 }
 
-.carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+#carouselCards > * {
+  scroll-snap-align: center; /* Optional for snapping */
+  flex-shrink: 0; /* Prevent card shrinking */
 }
 
-/* Controls and indicators (unchanged or tweaked) */
-.control {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.7);
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 20px;
-    z-index: 10;
-    border-radius: 50%;
-}
 
-.control.prev {
-    left: 15px;
-}
-
-.control.next {
-    right: 15px;
-}
-
-.indicators {
-    position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-}
-
-.indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #bbb;
-    border: none;
-    cursor: pointer;
-}
-
-.indicator.active {
-    background-color: #333;
-}
