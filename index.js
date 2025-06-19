@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.appendChild(hamburgerOverlay);
 
   let isSidebarOpen = false;
-
   const sidebarMainItems = sidebar?.querySelectorAll("ul > li");
 
   sidebarMainItems?.forEach((item) => {
@@ -28,13 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
     );
   });
 
-function animateSidebarIn() {
-  sidebarMainItems?.forEach((item, i) => {
-    item.style.transitionDelay = `${i * 30}ms`; // small delay between each start
-    item.classList.remove("opacity-0", "translate-x-4");
-    item.classList.add("opacity-100", "translate-x-0");
-  });
-}
+  function animateSidebarIn() {
+    sidebarMainItems?.forEach((item, i) => {
+      item.style.transitionDelay = `${i * 30}ms`;
+      item.classList.remove("opacity-0", "translate-x-4");
+      item.classList.add("opacity-100", "translate-x-0");
+    });
+  }
 
   function resetSidebarAnimation() {
     sidebarMainItems?.forEach((item) => {
@@ -44,48 +43,56 @@ function animateSidebarIn() {
     });
   }
 
-function showSidebar() {
-  sidebar?.classList.remove("hidden");
-  requestAnimationFrame(() => {
-    sidebar?.classList.add("block");
-    hamburgerOverlay.classList.replace("opacity-0", "opacity-100");
-    hamburgerOverlay.classList.replace("pointer-events-none", "pointer-events-auto");
-    toggleBtn?.setAttribute("aria-expanded", "true");
-    iconPath?.setAttribute("d", closePath);
-    isSidebarOpen = true;
+  function showSidebar() {
+    sidebar?.classList.remove("hidden");
+    requestAnimationFrame(() => {
+      sidebar?.classList.add("block");
+      hamburgerOverlay.classList.replace("opacity-0", "opacity-100");
+      hamburgerOverlay.classList.replace("pointer-events-none", "pointer-events-auto");
+      toggleBtn?.setAttribute("aria-expanded", "true");
+      iconPath?.setAttribute("d", closePath);
+      isSidebarOpen = true;
 
+      setTimeout(() => {
+        animateSidebarIn();
+      }, 100);
+    });
+  }
+
+  function hideSidebar() {
+    sidebar?.classList.remove("block");
     setTimeout(() => {
-      animateSidebarIn();
-    }, 100);
-  });
-}
+      sidebar?.classList.add("hidden");
+    }, 50);
 
+    hamburgerOverlay.classList.replace("opacity-100", "opacity-0");
+    hamburgerOverlay.classList.replace("pointer-events-auto", "pointer-events-none");
+    toggleBtn?.setAttribute("aria-expanded", "false");
+    iconPath?.setAttribute("d", hamburgerPath);
+    isSidebarOpen = false;
 
-function hideSidebar() {
-  sidebar?.classList.remove("block");
-  sidebar?.classList.add("hidden");
-  hamburgerOverlay.classList.replace("opacity-100", "opacity-0");
-  hamburgerOverlay.classList.replace("pointer-events-auto", "pointer-events-none");
-  toggleBtn?.setAttribute("aria-expanded", "false");
-  iconPath?.setAttribute("d", hamburgerPath);
-  isSidebarOpen = false;
-
-  resetSidebarAnimation();
-}
-
+    resetSidebarAnimation();
+  }
 
   function setLayoutByScreen() {
     if (window.innerWidth >= 768) {
-      sidebar?.classList.add("translate-x-full");
+      hideSidebar();
+      sidebar?.classList.add("translate-x-full", "hidden");
       hamburgerOverlay.classList.add("opacity-0", "pointer-events-none");
       desktopMenu?.classList.remove("hidden");
       desktopMenu?.classList.add("flex");
       iconPath?.setAttribute("d", hamburgerPath);
       isSidebarOpen = false;
     } else {
-      hideSidebar();
       desktopMenu?.classList.remove("flex");
       desktopMenu?.classList.add("hidden");
+
+      sidebar?.classList.remove("translate-x-full");
+      sidebar?.classList.add("hidden");
+      hamburgerOverlay.classList.add("opacity-0", "pointer-events-none");
+      iconPath?.setAttribute("d", hamburgerPath);
+      isSidebarOpen = false;
+      resetSidebarAnimation();
     }
   }
 
@@ -167,8 +174,6 @@ function hideSidebar() {
   });
 
   dropdownsContainer?.addEventListener("mouseleave", hideDropdown);
-
-  
 });
 // End of NAVIGATION
 
