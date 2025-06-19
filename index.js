@@ -1,5 +1,5 @@
+/* NAVBAR */
 document.addEventListener("DOMContentLoaded", () => {
-  // ----- HAMBURGER MENU LOGIC (UNCHANGED) -----
   const toggleBtn = document.getElementById("menu-toggle-btn");
   const iconPath = document.getElementById("menu-icon-path");
   const sidebar = document.getElementById("sidebar-multi-level-sidebar");
@@ -16,6 +16,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let isSidebarOpen = false;
 
+  const sidebarMainItems = sidebar?.querySelectorAll("ul > li");
+
+  sidebarMainItems?.forEach((item) => {
+    item.classList.add(
+      "opacity-0",
+      "translate-x-4",
+      "transition-all",
+      "duration-300",
+      "ease-in-out"
+    );
+  });
+
+function animateSidebarIn() {
+  sidebarMainItems?.forEach((item, i) => {
+    item.style.transitionDelay = `${i * 30}ms`; // small delay between each start
+    item.classList.remove("opacity-0", "translate-x-4");
+    item.classList.add("opacity-100", "translate-x-0");
+  });
+}
+
+  function resetSidebarAnimation() {
+    sidebarMainItems?.forEach((item) => {
+      item.style.transitionDelay = `0ms`;
+      item.classList.remove("opacity-100", "translate-x-0");
+      item.classList.add("opacity-0", "translate-x-4");
+    });
+  }
+
   function showSidebar() {
     sidebar?.classList.remove("translate-x-full");
     sidebar?.classList.add("translate-x-0");
@@ -24,6 +52,10 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleBtn?.setAttribute("aria-expanded", "true");
     iconPath?.setAttribute("d", closePath);
     isSidebarOpen = true;
+
+    setTimeout(() => {
+      animateSidebarIn();
+    }, 100); // Slightly longer delay ensures sidebar is visible before animating items
   }
 
   function hideSidebar() {
@@ -34,6 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
     toggleBtn?.setAttribute("aria-expanded", "false");
     iconPath?.setAttribute("d", hamburgerPath);
     isSidebarOpen = false;
+
+    resetSidebarAnimation();
   }
 
   function setLayoutByScreen() {
@@ -43,6 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
       desktopMenu?.classList.remove("hidden");
       desktopMenu?.classList.add("flex");
       iconPath?.setAttribute("d", hamburgerPath);
+      isSidebarOpen = false;
     } else {
       hideSidebar();
       desktopMenu?.classList.remove("flex");
@@ -70,12 +105,11 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("resize", setLayoutByScreen);
   setLayoutByScreen();
 
-  // ----- DROPDOWN MENU LOGIC -----
+  // --- DROPDOWN LOGIC ---
   const navItems = document.querySelectorAll("[data-menu]");
   const dropdownsContainer = document.getElementById("dropdowns-container");
-  const allDropdowns = dropdownsContainer.querySelectorAll(".submenu-dropdown");
+  const allDropdowns = dropdownsContainer?.querySelectorAll(".submenu-dropdown");
 
-  // Dropdown blur overlay (separate from hamburger overlay)
   const dropdownOverlay = document.createElement("div");
   dropdownOverlay.id = "dropdown-blur-overlay";
   dropdownOverlay.className = `
@@ -90,18 +124,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const nextDropdown = document.getElementById(`dropdown-${menuKey}`);
     if (!nextDropdown || activeDropdown === nextDropdown) return;
 
-    // Remove active classes from all dropdowns and navItems
-    allDropdowns.forEach(d => d.classList.remove("active"));
-    navItems.forEach(item => item.classList.remove("active-menu"));
+    allDropdowns?.forEach((d) => d.classList.remove("active"));
+    navItems.forEach((item) => item.classList.remove("active-menu"));
+    if (window.innerWidth < 768) return;
 
-    // Activate the current dropdown and its navItem
     nextDropdown.classList.add("active");
     activeDropdown = nextDropdown;
 
-    const activeNavItem = Array.from(navItems).find(item => item.getAttribute("data-menu") === menuKey);
-    if (activeNavItem) activeNavItem.classList.add("active-menu");
+    const activeNavItem = Array.from(navItems).find(
+      (item) => item.getAttribute("data-menu") === menuKey
+    );
+    activeNavItem?.classList.add("active-menu");
 
-    // Animate dropdown items
     const items = nextDropdown.querySelectorAll(".dropdown-item");
     items.forEach((item, i) => {
       item.style.transitionDelay = `${i * 60}ms`;
@@ -117,63 +151,25 @@ document.addEventListener("DOMContentLoaded", () => {
       activeDropdown.classList.remove("active");
       activeDropdown = null;
     }
-    navItems.forEach(item => item.classList.remove("active-menu"));
+    navItems.forEach((item) => item.classList.remove("active-menu"));
     dropdownOverlay.style.display = "none";
   }
 
-  navItems.forEach(item => {
+  navItems.forEach((item) => {
     const key = item.getAttribute("data-menu");
     item.addEventListener("mouseenter", () => {
       if (window.innerWidth >= 768) showDropdown(key);
     });
   });
 
-  dropdownsContainer.addEventListener("mouseleave", hideDropdown);
+  dropdownsContainer?.addEventListener("mouseleave", hideDropdown);
+
+  
 });
-
-// ----- SIDEBAR ANIMATION FOR MAIN MENUS ONLY -----
-const sidebarMainItems = sidebar?.querySelectorAll("ul > li");
-
-sidebarMainItems?.forEach((item, index) => {
-  item.classList.add("opacity-0", "translate-x-4", "transition-all", "duration-300");
-});
-
-// Animate in when sidebar opens
-function animateSidebarIn() {
-  sidebarMainItems?.forEach((item, i) => {
-    item.style.transitionDelay = `${i * 60}ms`;
-    item.classList.remove("opacity-0", "translate-x-4");
-    item.classList.add("opacity-100", "translate-x-0");
-  });
-}
-
-// Reset animation when sidebar closes
-function resetSidebarAnimation() {
-  sidebarMainItems?.forEach((item) => {
-    item.style.transitionDelay = `0ms`;
-    item.classList.remove("opacity-100", "translate-x-0");
-    item.classList.add("opacity-0", "translate-x-4");
-  });
-}
-
-// Modify showSidebar and hideSidebar to include animation
-const originalShowSidebar = showSidebar;
-const originalHideSidebar = hideSidebar;
-
-showSidebar = function () {
-  originalShowSidebar();
-  animateSidebarIn();
-};
-
-hideSidebar = function () {
-  originalHideSidebar();
-  resetSidebarAnimation();
-};
-
-
-
-
 // End of NAVIGATION
+
+
+// CAROUSELL
 const carousel = document.getElementById('carouselCards');
 const prevArrow = document.getElementById('prevArrow');
 const nextArrow = document.getElementById('nextArrow');
