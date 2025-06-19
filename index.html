@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Updated Nav</title>
+  <title>Updated Nav 1.0</title>
    <link rel="stylesheet" href="index.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.js"></script>
@@ -91,9 +91,103 @@
 
 
 
-<aside id="sidebar-multi-level-sidebar"
-  class="absolute top-[4.5rem] right-0 z-30 w-64 h-[calc(100vh-4.5rem)] bg-gray-50 dark:bg-gray-800 overflow-y-auto transition-transform transform translate-x-full"
-  aria-label="Sidebar">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Nav</title>
+   <link rel="stylesheet" href="index.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.js"></script>
+</head>
+
+
+<!-- 🌐 NAVIGATION BAR -->
+<nav class="relative bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900 z-50">
+  <div class="flex flex-wrap items-center justify-between mx-auto max-w-screen-xl p-4">
+    <a href="#" class="flex items-center space-x-3">
+      <img src="images/sample-image.jpeg" class="h-8" alt="Logo" />
+      <span class="text-2xl font-semibold dark:text-white">MySite</span>
+    </a>
+
+    <button id="menu-toggle-btn" type="button" class="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path id="menu-icon-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+
+    <div id="mega-menu-full" class="hidden w-full md:flex md:w-auto md:order-1">
+      <ul class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-8 font-medium bg-gray-50 md:bg-transparent p-4 md:p-0 mt-4 md:mt-0 border border-gray-100 md:border-0 rounded-lg dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
+        <li class="relative" data-menu="pricing">
+          <a href="#" class="block py-2 px-3 text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500">Pricing</a>
+        </li>
+        <li class="relative" data-menu="resources">
+          <a href="#" class="block py-2 px-3 text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500">Resources</a>
+        </li>
+        <li class="relative" data-menu="contact">
+          <a href="#" class="block py-2 px-3 text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="dropdowns-container" class="relative z-40">
+  <div id="dropdown-pricing" class="submenu-dropdown bg-white dark:bg-gray-800 border-y border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white">
+    <div class="max-w-screen-xl mx-auto px-4 py-6 grid sm:grid-cols-2 gap-4">
+      <a href="#" class="dropdown-item block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 opacity-0 translate-y-4 transition-all duration-300">
+        <div class="font-semibold">Basic Plan</div>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Affordable for individuals.</span>
+      </a>
+      <a href="#" class="dropdown-item block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 opacity-0 translate-y-4 transition-all duration-300">
+        <div class="font-semibold">Pro Plan</div>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Best for small teams.</span>
+      </a>
+    </div>
+  </div>
+
+  <div id="dropdown-resources" class="submenu-dropdown bg-white dark:bg-gray-800 border-y border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white">
+    <div class="max-w-screen-xl mx-auto px-4 py-6 grid sm:grid-cols-2 gap-4">
+      <a href="#" class="dropdown-item block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 opacity-0 translate-y-4 transition-all duration-300">
+        <div class="font-semibold">Documentation</div>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Technical guides and API docs.</span>
+      </a>
+      <a href="#" class="dropdown-item block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 opacity-0 translate-y-4 transition-all duration-300">
+        <div class="font-semibold">Tutorials</div>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Step-by-step learning.</span>
+      </a>
+    </div>
+  </div>
+
+  <div id="dropdown-contact" class="submenu-dropdown bg-white dark:bg-gray-800 border-y border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white">
+    <div class="max-w-screen-xl mx-auto px-4 py-6 grid sm:grid-cols-2 gap-4">
+      <a href="#" class="dropdown-item block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 opacity-0 translate-y-4 transition-all duration-300">
+        <div class="font-semibold">Support</div>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Get help from our team.</span>
+      </a>
+      <a href="#" class="dropdown-item block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 opacity-0 translate-y-4 transition-all duration-300">
+        <div class="font-semibold">Email Us</div>
+        <span class="text-sm text-gray-500 dark:text-gray-400">We reply within 24 hours.</span>
+      </a>
+      <a href="#" class="dropdown-item block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 opacity-0 translate-y-4 transition-all duration-300">
+        <div class="font-semibold">Support</div>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Get help from our team.</span>
+      </a>
+      <a href="#" class="dropdown-item block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 opacity-0 translate-y-4 transition-all duration-300">
+        <div class="font-semibold">Support</div>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Get help from our team.</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+
+<aside
+  id="sidebar-multi-level-sidebar"
+  class="hidden fixed top-[4.5rem] right-0 z-30 w-64 h-[calc(100vh-4.5rem)] bg-gray-50 dark:bg-gray-800 overflow-y-auto transition-all"
+  aria-label="Sidebar"
+>
   <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
     <ul class="space-y-2 font-medium">
       
@@ -101,58 +195,512 @@
       <li>
         <button type="button"
           class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-          aria-controls="dropdown-example-1" data-collapse-toggle="dropdown-example-1">
+          aria-controls="dropdown-example-1"
+          data-collapse-toggle="dropdown-example-1">
           <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">E-commerce</span>
-          <svg class="w-[17px] h-[17px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="m19 9-7 7-7-7"/>
+          <svg class="w-[17px] h-[17px] text-gray-800 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+              d="m19 9-7 7-7-7" />
           </svg>
         </button>
         <ul id="dropdown-example-1" class="hidden py-2 space-y-2">
-          <li><a href="#" class="flex items-center w-full p-2 text-gray-900 pl-11 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Products</a></li>
-          <li><a href="#" class="flex items-center w-full p-2 text-gray-900 pl-11 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Billing</a></li>
-          <li><a href="#" class="flex items-center w-full p-2 text-gray-900 pl-11 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Invoice</a></li>
+          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Products</a></li>
+          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Billing</a></li>
+          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Invoice</a></li>
         </ul>
       </li>
+
       <li><hr class="border-gray-200 dark:border-gray-700"></li>
 
       <!-- Menu 2 -->
       <li>
         <button type="button"
           class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-          aria-controls="dropdown-example-2" data-collapse-toggle="dropdown-example-2">
+          aria-controls="dropdown-example-2"
+          data-collapse-toggle="dropdown-example-2">
           <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">E-commerce</span>
-          <svg class="w-[17px] h-[17px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="m19 9-7 7-7-7"/>
+          <svg class="w-[17px] h-[17px] text-gray-800 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+              d="m19 9-7 7-7-7" />
           </svg>
         </button>
         <ul id="dropdown-example-2" class="hidden py-2 space-y-2">
-          <li><a href="#" class="flex items-center w-full p-2 text-gray-900 pl-11 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Products</a></li>
-          <li><a href="#" class="flex items-center w-full p-2 text-gray-900 pl-11 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Billing</a></li>
-          <li><a href="#" class="flex items-center w-full p-2 text-gray-900 pl-11 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Invoice</a></li>
+          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Products</a></li>
+          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Billing</a></li>
+          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Invoice</a></li>
         </ul>
       </li>
+
       <li><hr class="border-gray-200 dark:border-gray-700"></li>
 
       <!-- Menu 3 -->
       <li>
         <button type="button"
           class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-          aria-controls="dropdown-example-3" data-collapse-toggle="dropdown-example-3">
+          aria-controls="dropdown-example-3"
+          data-collapse-toggle="dropdown-example-3">
           <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">E-commerce</span>
-          <svg class="w-[17px] h-[17px] text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="m19 9-7 7-7-7"/>
+          <svg class="w-[17px] h-[17px] text-gray-800 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+            viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+              d="m19 9-7 7-7-7" />
           </svg>
         </button>
         <ul id="dropdown-example-3" class="hidden py-2 space-y-2">
-          <li><a href="#" class="flex items-center w-full p-2 text-gray-900 pl-11 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Products</a></li>
-          <li><a href="#" class="flex items-center w-full p-2 text-gray-900 pl-11 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Billing</a></li>
-          <li><a href="#" class="flex items-center w-full p-2 text-gray-900 pl-11 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Invoice</a></li>
+          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Products</a></li>
+          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Billing</a></li>
+          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Invoice</a></li>
         </ul>
       </li>
+
       <li><hr class="border-gray-200 dark:border-gray-700"></li>
+      
     </ul>
   </div>
 </aside>
+
+
+
+
+<body>
+<!-- HEADER TITLE -->
+<section class="bg-white px-4 py-8 antialiased dark:bg-gray-900 md:py-16">
+  <div class="mx-auto max-w-screen-xl text-center">
+    
+    <h1 class="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+      We invest in the world’s potential
+    </h1>
+
+    <p class="mb-6 text-lg font-normal text-gray-500 sm:px-6 lg:px-24 xl:px-48 lg:text-xl dark:text-gray-400">
+      Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.
+    </p>
+
+    <a href="#" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+      Learn more
+      <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+      </svg>
+    </a>
+
+  </div>
+</section>
+
+<!-- IMAGE WITH DESCRIPTION 1-->
+
+<section class="bg-white dark:bg-gray-900">
+  <div class="gap-8 items-center py-8 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16">
+    
+    <!-- IMAGE -->
+    <div>
+      <img class="w-full dark:hidden" src="images\sample-image.jpeg" alt="dashboard image">
+      <img class="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image">
+    </div>
+
+    <!-- TEXT with margin-right on mobile -->
+    <div class="mt-4 md:mt-0 px-4 sm:px-6">
+      <h1 class="mb-3 text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-4xl">
+        Save $500 today on your purchase <br />
+        of a new iMac computer.
+      </h1>
+      <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">
+        Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.
+      </p>
+      <a href="#" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+        Get started
+        <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- IMAGE WITH DESCRIPTION #2 -->
+<section class="bg-white dark:bg-gray-900">
+  <div class="gap-8 items-center py-8 mx-auto max-w-screen-xl xl:gap-16 sm:py-16 md:grid md:grid-cols-2">
+
+    <!-- IMAGE -->
+    <div class="order-1 md:order-2">
+      <img class="w-full dark:hidden" src="images\sample-image.jpeg" alt="dashboard image">
+      <img class="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/cta/cta-dashboard-mockup-dark.svg" alt="dashboard image">
+    </div>
+
+    <!-- TEXT with margin-left on mobile -->
+    <div class="order-2 md:order-1 mt-4 md:mt-0 px-4 sm:px-6">
+      <h1 class="mb-3 text-2xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-4xl">
+        Save $500 today on your purchase <br />
+        of a new iMac computer.
+      </h1>
+      <p class="mb-6 font-light text-gray-500 md:text-lg dark:text-gray-400">
+        Flowbite helps you connect with friends and communities of people who share your interests. Connecting with your friends and family as well as discovering new ones is easy with features like Groups.
+      </p>
+      <a href="#" class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
+        Get started
+        <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+ 
+<!-- CARD CAROUSEL -->
+<section class="bg-white dark:bg-gray-900 py-12 px-4 relative select-none">
+<div class="w-full relative overflow-hidden">
+
+   <div class="w-full max-w-screen-xl mx-auto relative overflow-hidden">
+  <div id="carouselCards" class="flex gap-6 flex-nowrap min-w-0 overflow-x-auto scroll-smooth no-scrollbar transition-all duration-700 ease-in-out cursor-grab active:cursor-grabbing">
+
+<!-- Card 1 -->    
+<a href="#" class="zoom-card block w-[85%] sm:w-[300px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+  <div class="relative overflow-visible"> <!-- changed here -->
+    <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" style="pointer-events:none;" />
+    </div>
+    <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Noteworthy technology acquisitions 2021
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </div>
+    </div>
+</a>
+
+<!-- Card 2 -->    
+<a href="#" class="zoom-card block w-[85%] sm:w-[300px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+  <div class="relative overflow-visible"> <!-- changed here -->
+    <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" style="pointer-events:none;" />
+    </div>
+    <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Noteworthy technology acquisitions 2021
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </div>
+    </div>
+</a>
+
+<!-- Card 3 -->    
+<a href="#" class="zoom-card block w-[85%] sm:w-[300px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+  <div class="relative overflow-visible"> <!-- changed here -->
+    <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" style="pointer-events:none;" />
+    </div>
+    <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Noteworthy technology acquisitions 2021
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </div>
+    </div>
+</a>
+
+<!-- Card 4 -->    
+<a href="#" class="zoom-card block w-[85%] sm:w-[300px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+  <div class="relative overflow-visible"> <!-- changed here -->
+    <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" style="pointer-events:none;" />
+    </div>
+    <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Noteworthy technology acquisitions 2021
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </div>
+    </div>
+</a>
+
+  <!-- Card 5 -->    
+<a href="#" class="zoom-card block w-[85%] sm:w-[300px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+  <div class="relative overflow-visible"> <!-- changed here -->
+    <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" style="pointer-events:none;" />
+    </div>
+    <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Noteworthy technology acquisitions 2021
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </div>
+    </div>
+</a>
+</a>
+
+ <!-- Card 6 -->    
+<a href="#" class="zoom-card block w-[85%] sm:w-[300px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+  <div class="relative overflow-visible"> <!-- changed here -->
+    <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" style="pointer-events:none;" />
+    </div>
+    <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Noteworthy technology acquisitions 2021
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </div>
+    </div>
+</a>
+
+ <!-- Card 7 -->    
+<a href="#" class="zoom-card block w-[85%] sm:w-[300px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+  <div class="relative overflow-visible"> <!-- changed here -->
+    <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" style="pointer-events:none;" />
+    </div>
+    <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Noteworthy technology acquisitions 2021
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </div>
+    </div>
+</a>
+
+ <!-- Card 8 -->    
+<a href="#" class="zoom-card block w-[85%] sm:w-[300px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+  <div class="relative overflow-visible"> <!-- changed here -->
+    <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" style="pointer-events:none;" />
+    </div>
+    <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Noteworthy technology acquisitions 2021
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+        </p>
+        <div class="inline-flex items-center px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </div>
+    </div>
+</a>
+
+
+    </div>
+    
+<div class="flex justify-end mt-4 gap-3">
+  <!-- Prev Button -->
+ <button id="prevArrow"
+ class="h-10 w-10 flex items-center justify-center rounded-full bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-white focus:outline-none opacity-0 pointer-events-none transition-opacity duration-300">
+    <svg class="w-4 h-4 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
+      <path d="M7 1L3 5l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="sr-only">Previous</span>
+  </button>
+
+  <!-- Next Button -->
+  <button id="nextArrow"
+    class="h-10 w-10 flex items-center justify-center rounded-full bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-white focus:outline-none">
+    <svg class="w-4 h-4 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="none">
+      <path d="M3 9l4-4-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="sr-only">Next</span>
+  </button>
+</div>
+
+
+  <!-- Hide Scrollbar CSS -->
+  <style>
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</section>
+
+<div class="p-5 mx-auto sm:p-10 md:p-16 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100">
+  <div class="flex flex-col max-w-3xl mx-auto overflow-hidden rounded">
+    <img src="images/sample-image.jpeg" alt="" class="w-full h-60 sm:h-96 bg-gray-200 dark:bg-gray-700">
+    <div class="p-6 pb-12 m-4 mx-auto -mt-16 space-y-6 lg:max-w-2xl sm:px-10 sm:mx-12 lg:rounded-md bg-gray-50 dark:bg-gray-900">
+      <div class="space-y-2">
+        <a href="#" class="inline-block text-2xl font-semibold sm:text-3xl">The Best Activewear from the Nordstrom Anniversary Sale</a>
+        <p class="text-xs text-gray-500 dark:text-gray-400">
+          By
+          <a href="#" class="text-xs hover:underline">Leroy Jenkins</a>
+        </p>
+      </div>
+      <div>
+        <p>Insert the actual text content here...</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100">
+  <div class="container max-w-5xl px-4 py-12 mx-auto">
+    <div class="grid gap-4 mx-4 sm:grid-cols-12">
+      <div class="col-span-12 sm:col-span-3">
+        <div class="text-center sm:text-left mb-14 before:block before:w-24 before:h-3 before:mb-5 before:rounded-md before:mx-auto sm:before:mx-0 before:bg-violet-600 dark:before:bg-violet-400">
+          <h3 class="text-3xl font-semibold">Morbi tempor</h3>
+          <span class="text-sm font-bold tracking-wider uppercase text-gray-500 dark:text-gray-400">Vestibulum diam nunc</span>
+        </div>
+      </div>
+      <div class="relative col-span-12 px-4 space-y-6 sm:col-span-9">
+        <div class="col-span-12 space-y-12 relative px-4 sm:col-span-8 sm:space-y-8 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 before:bg-gray-300 dark:before:bg-gray-700">
+          <!-- Item 1 -->
+          <div class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:bg-violet-600 dark:before:bg-violet-400">
+            <h3 class="text-xl font-semibold tracking-wide">Donec porta enim vel</h3>
+            <time class="text-xs tracking-wide uppercase text-gray-500 dark:text-gray-400">Dec 2020</time>
+            <p class="mt-3">Pellentesque feugiat ante at nisl efficitur, in mollis orci scelerisque. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+          </div>
+          <!-- Item 2 -->
+          <div class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:bg-violet-600 dark:before:bg-violet-400">
+            <h3 class="text-xl font-semibold tracking-wide">Aliquam sit amet nunc ut</h3>
+            <time class="text-xs tracking-wide uppercase text-gray-500 dark:text-gray-400">Jul 2019</time>
+            <p class="mt-3">Morbi vulputate aliquam libero non dictum. Aliquam sit amet nunc ut diam aliquet tincidunt nec nec dui. Donec mollis turpis eget egestas sodales.</p>
+          </div>
+          <!-- Item 3 -->
+          <div class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:bg-violet-600 dark:before:bg-violet-400">
+            <h3 class="text-xl font-semibold tracking-wide">Pellentesque habitant morbi</h3>
+            <time class="text-xs tracking-wide uppercase text-gray-500 dark:text-gray-400">Jan 2016</time>
+            <p class="mt-3">Suspendisse tincidunt, arcu nec faucibus efficitur, justo velit consectetur nisl, sit amet condimentum lacus orci nec purus. Mauris quis quam suscipit, vehicula felis id, vehicula enim.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="px-4 md:px-8 py-8 bg-white dark:bg-gray-900 transition-colors duration-300">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="grid gap-4">
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt=""></a>
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt=""></a>
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt=""></a>
+    </div>
+    <div class="grid gap-4">
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt=""></a>
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt=""></a>
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt=""></a>
+    </div>
+    <div class="grid gap-4">
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt=""></a>
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt=""></a>
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt=""></a>
+    </div>
+    <div class="grid gap-4">
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt=""></a>
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt=""></a>
+      <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" alt=""></a>
+    </div>
+  </div>
+</div>
+
+<section class="bg-white px-4 py-8 antialiased dark:bg-gray-900 md:py-16">
+  <div class="max-w-screen-xl mx-auto">
+<div id="accordion" class="divide-y-2 divide-gray-300 dark:divide-gray-700">
+
+      <!-- Accordion Item -->
+      <div class="accordion-item overflow-hidden transition-all duration-500 ease-in-out">
+        <button class="accordion-header flex justify-between items-center w-full py-5 text-left text-gray-900 dark:text-white text-2xl font-bold tracking-tight focus:outline-none">
+          <span>What is Apple News?</span>
+          <svg class="w-6 h-6 transition-transform duration-300 text-gray-900 dark:text-white stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="accordion-body max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out text-gray-600 dark:text-gray-300">
+          <div class="pb-5">
+           Apple News and Apple News+ both feature the world’s best journalism from trusted sources, curated by human editors and personalized to your interests. With Apple News+ you unlock access to premium content from hundreds of magazines and leading local, national, and international newspapers, cover-to-cover magazine issues you can read online or off, and audio stories — professionally narrated versions of some of the best stories available in Apple News+.
+          </div>
+        </div>
+      </div>
+    
+      <div class="accordion-item overflow-hidden transition-all duration-500 ease-in-out">
+        <button class="accordion-header flex justify-between items-center w-full py-5 text-left text-gray-900 dark:text-white text-2xl font-bold tracking-tight focus:outline-none">
+          <span>How is Apple News+ different from Apple News?</span>
+          <svg class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="accordion-body max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out text-gray-600 dark:text-gray-300">
+          <div class="pb-5">
+            Apple News+ is a premium subscription that includes access to hundreds of magazines and newspapers, plus exclusive content.
+          </div>
+        </div>
+      </div>
+
+       <div class="accordion-item overflow-hidden transition-all duration-500 ease-in-out">
+        <button class="accordion-header flex justify-between items-center w-full py-5 text-left text-gray-900 dark:text-white text-2xl font-bold tracking-tight focus:outline-none">
+          <span>How is Apple News+ different from Apple News?</span>
+          <svg class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        <div class="accordion-body max-h-0 overflow-hidden opacity-0 transition-all duration-500 ease-in-out text-gray-600 dark:text-gray-300">
+          <div class="pb-5">
+            Apple News+ is a premium subscription that includes access to hundreds of magazines and newspapers, plus exclusive content.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+</body>
+<script src="index.js"></script>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- Flowbite JS (requires Tailwind + Alpine or Vanilla JS) -->
+<script src="https://unpkg.com/flowbite@2.3.0/dist/flowbite.min.js"></script>
+
+</html>
 
 
 
