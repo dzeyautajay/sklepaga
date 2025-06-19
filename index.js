@@ -1,264 +1,176 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const toggleButton = document.querySelector('[data-collapse-toggle="mega-menu-full"]');
-  const menu = document.getElementById("mega-menu-full");
+  // ----- HAMBURGER MENU LOGIC (UNCHANGED) -----
+  const toggleBtn = document.getElementById("menu-toggle-btn");
+  const iconPath = document.getElementById("menu-icon-path");
+  const sidebar = document.getElementById("sidebar-multi-level-sidebar");
+  const desktopMenu = document.getElementById("mega-menu-full");
+  const hamburgerPath = "M4 6h16M4 12h16M4 18h16";
+  const closePath = "M6 18L18 6M6 6l12 12";
 
-  const overlay = document.createElement("div");
-  overlay.className = `
-    fixed inset-0 z-40 bg-black bg-opacity-50 backdrop-blur-[20px]
-    opacity-0 pointer-events-none transition-opacity duration-500 ease-in-out
+  const hamburgerOverlay = document.createElement("div");
+  hamburgerOverlay.className = `
+    fixed inset-0 z-20 bg-black bg-opacity-50 backdrop-blur-sm
+    opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out
   `;
-  document.body.appendChild(overlay);
+  document.body.appendChild(hamburgerOverlay);
 
-  let isMenuOpen = false;
+  let isSidebarOpen = false;
 
-  function isMobile() {
-    return window.innerWidth < 768;
+  function showSidebar() {
+    sidebar?.classList.remove("translate-x-full");
+    sidebar?.classList.add("translate-x-0");
+    hamburgerOverlay.classList.replace("opacity-0", "opacity-100");
+    hamburgerOverlay.classList.replace("pointer-events-none", "pointer-events-auto");
+    toggleBtn?.setAttribute("aria-expanded", "true");
+    iconPath?.setAttribute("d", closePath);
+    isSidebarOpen = true;
   }
 
-  function animateMenuItemsIn() {
-    const items = menu.querySelectorAll("li, a, div");
-    items.forEach((item) => {
-      item.style.opacity = "0";
-      item.style.transform = "translateY(-10px)";
-      item.style.transition = "none";
-    });
-    void menu.offsetHeight;
-    items.forEach((item, index) => {
-      item.style.transition = `opacity 0.4s ease ${index * 0.05}s, transform 0.4s ease ${index * 0.05}s`;
-      item.style.opacity = "1";
-      item.style.transform = "translateY(0)";
-    });
+  function hideSidebar() {
+    sidebar?.classList.add("translate-x-full");
+    sidebar?.classList.remove("translate-x-0");
+    hamburgerOverlay.classList.replace("opacity-100", "opacity-0");
+    hamburgerOverlay.classList.replace("pointer-events-auto", "pointer-events-none");
+    toggleBtn?.setAttribute("aria-expanded", "false");
+    iconPath?.setAttribute("d", hamburgerPath);
+    isSidebarOpen = false;
   }
 
-  function resetMenuItems() {
-    const items = menu.querySelectorAll("li, a, div");
-    items.forEach((item) => {
-      item.style.opacity = "";
-      item.style.transform = "";
-      item.style.transition = "";
-    });
+  function setLayoutByScreen() {
+    if (window.innerWidth >= 768) {
+      sidebar?.classList.add("translate-x-full");
+      hamburgerOverlay.classList.add("opacity-0", "pointer-events-none");
+      desktopMenu?.classList.remove("hidden");
+      desktopMenu?.classList.add("flex");
+      iconPath?.setAttribute("d", hamburgerPath);
+    } else {
+      hideSidebar();
+      desktopMenu?.classList.remove("flex");
+      desktopMenu?.classList.add("hidden");
+    }
   }
 
-  function showMenu() {
-    menu.classList.remove(
-      "hidden", "max-h-0", "opacity-0", "pointer-events-none", "scale-95", "translate-y-2"
-    );
-    menu.classList.add(
-      "block", "max-h-[1000px]", "opacity-100", "pointer-events-auto", "scale-100", "translate-y-0"
-    );
-    overlay.classList.remove("opacity-0", "pointer-events-none");
-    overlay.classList.add("opacity-100", "pointer-events-auto");
-
-    animateMenuItemsIn();
-    isMenuOpen = true;
-  }
-
-  function hideMenu() {
-    menu.classList.remove(
-      "block", "max-h-[1000px]", "opacity-100", "pointer-events-auto", "scale-100", "translate-y-0"
-    );
-    menu.classList.add(
-      "max-h-0", "opacity-0", "pointer-events-none", "scale-95", "translate-y-2"
-    );
-    overlay.classList.add("opacity-0", "pointer-events-none");
-    overlay.classList.remove("opacity-100", "pointer-events-auto");
-
-    resetMenuItems();
-    isMenuOpen = false;
-  }
-
-  toggleButton.addEventListener("click", (e) => {
-    e.stopPropagation();
-    if (isMobile()) {
-      isMenuOpen ? hideMenu() : showMenu();
+  toggleBtn?.addEventListener("click", () => {
+    if (window.innerWidth < 768) {
+      isSidebarOpen ? hideSidebar() : showSidebar();
     }
   });
 
-  function handleResize() {
-    if (isMenuOpen && isMobile()) {
-      toggleButton.click();
-    }
-
-    if (!isMobile()) {
-      menu.classList.remove(
-        "hidden", "max-h-0", "opacity-0", "pointer-events-none", "scale-95", "translate-y-2"
-      );
-      menu.classList.add(
-        "block", "opacity-100", "pointer-events-auto", "scale-100", "translate-y-0"
-      );
-      overlay.classList.add("opacity-0", "pointer-events-none");
-      overlay.classList.remove("opacity-100", "pointer-events-auto");
-
-      isMenuOpen = false;
-      resetMenuItems();
-    } else {
-      if (!isMenuOpen) {
-        menu.classList.remove(
-          "block", "max-h-[1000px]", "opacity-100", "pointer-events-auto", "scale-100", "translate-y-0"
-        );
-        menu.classList.add(
-          "transition-all", "duration-500", "ease-in-out", "overflow-hidden",
-          "max-h-0", "opacity-0", "pointer-events-none", "scale-95", "translate-y-2"
-        );
-        overlay.classList.add("opacity-0", "pointer-events-none");
-        overlay.classList.remove("opacity-100", "pointer-events-auto");
-        resetMenuItems();
-      }
-    }
-  }
-
-  handleResize();
-  window.addEventListener("resize", handleResize);
-
-  // 🔻 New: click outside to close
   document.addEventListener("click", (e) => {
-    if (isMobile() && isMenuOpen && !menu.contains(e.target) && !toggleButton.contains(e.target)) {
-      toggleButton.click();
+    if (
+      window.innerWidth < 768 &&
+      isSidebarOpen &&
+      !sidebar?.contains(e.target) &&
+      !toggleBtn?.contains(e.target)
+    ) {
+      hideSidebar();
     }
   });
 
-});
+  window.addEventListener("resize", setLayoutByScreen);
+  setLayoutByScreen();
 
+  // ----- DROPDOWN MENU LOGIC -----
+  const navItems = document.querySelectorAll("[data-menu]");
+  const dropdownsContainer = document.getElementById("dropdowns-container");
+  const allDropdowns = dropdownsContainer.querySelectorAll(".submenu-dropdown");
 
-  // DROPDOWN
-document.addEventListener("DOMContentLoaded", function () {
-  const dropdownButton = document.getElementById("mega-menu-full-dropdown-button");
-  const dropdownMenu = document.getElementById("mega-menu-full-dropdown");
-  const dropdownItems = dropdownMenu.querySelectorAll(".dropdown-item");
-  let isOpen = false;
-  let currentMode = null; // 'click' or 'hover'
+  // Dropdown blur overlay (separate from hamburger overlay)
+  const dropdownOverlay = document.createElement("div");
+  dropdownOverlay.id = "dropdown-blur-overlay";
+  dropdownOverlay.className = `
+    fixed inset-0 z-30 bg-black bg-opacity-20 backdrop-blur-[20px] pointer-events-none transition-none
+  `;
+  document.body.appendChild(dropdownOverlay);
+  dropdownOverlay.style.display = "none";
 
-  // Create and append overlay
-  const overlay = document.createElement("div");
-  overlay.className =
-    "fixed inset-0 z-40 bg-black/30 backdrop-blur-[20px] opacity-0 pointer-events-none transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)]";
-  document.body.appendChild(overlay);
+  let activeDropdown = null;
 
-  // Initialize menu
-  dropdownMenu.classList.add(
-    "transition-all",
-    "duration-700",
-    "ease-[cubic-bezier(0.4,0,0.2,1)]",
-    "overflow-hidden",
-    "transform",
-    "max-h-0",
-    "opacity-0",
-    "pointer-events-none",
-    "translate-y-[-10px]"
-  );
+  function showDropdown(menuKey) {
+    const nextDropdown = document.getElementById(`dropdown-${menuKey}`);
+    if (!nextDropdown || activeDropdown === nextDropdown) return;
 
-  dropdownItems.forEach((item) => {
-    item.classList.add("opacity-0", "translate-y-2", "transition-all", "duration-500");
-  });
+    // Remove active classes from all dropdowns and navItems
+    allDropdowns.forEach(d => d.classList.remove("active"));
+    navItems.forEach(item => item.classList.remove("active-menu"));
 
-  function openDropdown() {
-    dropdownMenu.classList.remove("max-h-0", "opacity-0", "pointer-events-none", "translate-y-[-10px]");
-    dropdownMenu.classList.add("max-h-[600px]", "opacity-100", "pointer-events-auto", "translate-y-0");
+    // Activate the current dropdown and its navItem
+    nextDropdown.classList.add("active");
+    activeDropdown = nextDropdown;
 
-    overlay.classList.remove("opacity-0", "pointer-events-none");
-    overlay.classList.add("opacity-100", "pointer-events-auto");
+    const activeNavItem = Array.from(navItems).find(item => item.getAttribute("data-menu") === menuKey);
+    if (activeNavItem) activeNavItem.classList.add("active-menu");
 
-    isOpen = true;
-
-    setTimeout(() => {
-      dropdownItems.forEach((item, index) => {
-        setTimeout(() => {
-          item.classList.remove("opacity-0", "translate-y-2");
-          item.classList.add("opacity-100", "translate-y-0");
-        }, index * 100);
-      });
-    }, 700);
-  }
-
-  function closeDropdown() {
-    dropdownMenu.classList.add("max-h-0", "opacity-0", "pointer-events-none", "translate-y-[-10px]");
-    dropdownMenu.classList.remove("max-h-[600px]", "opacity-100", "pointer-events-auto", "translate-y-0");
-
-    overlay.classList.add("opacity-0", "pointer-events-none");
-    overlay.classList.remove("opacity-100", "pointer-events-auto");
-
-    dropdownItems.forEach((item) => {
-      item.classList.add("opacity-0", "translate-y-2");
-      item.classList.remove("opacity-100", "translate-y-0");
+    // Animate dropdown items
+    const items = nextDropdown.querySelectorAll(".dropdown-item");
+    items.forEach((item, i) => {
+      item.style.transitionDelay = `${i * 60}ms`;
+      item.classList.remove("opacity-0", "translate-y-4");
+      item.classList.add("opacity-100", "translate-y-0");
     });
 
-    isOpen = false;
+    dropdownOverlay.style.display = "block";
   }
 
-  // Store references to event handlers so we can remove them
-  const handlers = {
-    buttonClick: () => {
-      isOpen ? closeDropdown() : openDropdown();
-    },
-    overlayClick: () => {
-      closeDropdown();
-    },
-    buttonEnter: () => {
-      openDropdown();
-    },
-    buttonLeave: () => {
-      setTimeout(() => {
-        if (!dropdownMenu.matches(":hover")) closeDropdown();
-      }, 200);
-    },
-    menuLeave: () => {
-      setTimeout(() => {
-        if (!dropdownButton.matches(":hover")) closeDropdown();
-      }, 200);
-    },
-    menuEnter: () => {
-      openDropdown();
-    },
-  };
-
-  function removeAllListeners() {
-    dropdownButton.removeEventListener("click", handlers.buttonClick);
-    overlay.removeEventListener("click", handlers.overlayClick);
-
-    dropdownButton.removeEventListener("mouseenter", handlers.buttonEnter);
-    dropdownButton.removeEventListener("mouseleave", handlers.buttonLeave);
-    dropdownMenu.removeEventListener("mouseenter", handlers.menuEnter);
-    dropdownMenu.removeEventListener("mouseleave", handlers.menuLeave);
-    overlay.removeEventListener("mouseenter", closeDropdown);
-  }
-
-  function setupClickMode() {
-    if (currentMode === "click") return;
-    removeAllListeners();
-
-    dropdownButton.addEventListener("click", handlers.buttonClick);
-    overlay.addEventListener("click", handlers.overlayClick);
-
-    currentMode = "click";
-  }
-
-  function setupHoverMode() {
-    if (currentMode === "hover") return;
-    removeAllListeners();
-
-    dropdownButton.addEventListener("mouseenter", handlers.buttonEnter);
-    dropdownButton.addEventListener("mouseleave", handlers.buttonLeave);
-    dropdownMenu.addEventListener("mouseenter", handlers.menuEnter);
-    dropdownMenu.addEventListener("mouseleave", handlers.menuLeave);
-    overlay.addEventListener("mouseenter", closeDropdown);
-
-    currentMode = "hover";
-  }
-
-  function applyListenersBasedOnScreenSize() {
-    if (window.innerWidth >= 1024) {
-      setupHoverMode();
-    } else {
-      setupClickMode();
+  function hideDropdown() {
+    if (activeDropdown) {
+      activeDropdown.classList.remove("active");
+      activeDropdown = null;
     }
+    navItems.forEach(item => item.classList.remove("active-menu"));
+    dropdownOverlay.style.display = "none";
   }
 
-  applyListenersBasedOnScreenSize();
-
-  window.addEventListener("resize", () => {
-    applyListenersBasedOnScreenSize();
+  navItems.forEach(item => {
+    const key = item.getAttribute("data-menu");
+    item.addEventListener("mouseenter", () => {
+      if (window.innerWidth >= 768) showDropdown(key);
+    });
   });
+
+  dropdownsContainer.addEventListener("mouseleave", hideDropdown);
 });
+
+// ----- SIDEBAR ANIMATION FOR MAIN MENUS ONLY -----
+const sidebarMainItems = sidebar?.querySelectorAll("ul > li");
+
+sidebarMainItems?.forEach((item, index) => {
+  item.classList.add("opacity-0", "translate-x-4", "transition-all", "duration-300");
+});
+
+// Animate in when sidebar opens
+function animateSidebarIn() {
+  sidebarMainItems?.forEach((item, i) => {
+    item.style.transitionDelay = `${i * 60}ms`;
+    item.classList.remove("opacity-0", "translate-x-4");
+    item.classList.add("opacity-100", "translate-x-0");
+  });
+}
+
+// Reset animation when sidebar closes
+function resetSidebarAnimation() {
+  sidebarMainItems?.forEach((item) => {
+    item.style.transitionDelay = `0ms`;
+    item.classList.remove("opacity-100", "translate-x-0");
+    item.classList.add("opacity-0", "translate-x-4");
+  });
+}
+
+// Modify showSidebar and hideSidebar to include animation
+const originalShowSidebar = showSidebar;
+const originalHideSidebar = hideSidebar;
+
+showSidebar = function () {
+  originalShowSidebar();
+  animateSidebarIn();
+};
+
+hideSidebar = function () {
+  originalHideSidebar();
+  resetSidebarAnimation();
+};
+
+
 
 
 // End of NAVIGATION
@@ -359,95 +271,97 @@ window.addEventListener('resize', updateArrowVisibility);
 // Init
 updateArrowVisibility();
 
-// ========== ZOOM-IN EFFECT ==========
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const images = document.querySelectorAll(".zoom-img");
-    const isMobile = window.innerWidth < 1024;
-    let currentlyZoomedCard = null;
-
-    images.forEach((img) => {
-      img.style.transition = "transform 0.4s ease-in-out";
-      img.style.transform = "scale(1)";
-      const card = img.closest(".max-w-sm");
-
-      if (!card) return;
-
-      if (isMobile) {
-        // Click-to-zoom for mobile
-        card.onclick = () => {
-          // Zoom out previous if different
-          if (currentlyZoomedCard && currentlyZoomedCard !== card) {
-            const prevImg = currentlyZoomedCard.querySelector(".zoom-img");
-            if (prevImg) prevImg.style.transform = "scale(1)";
-          }
-
-          if (currentlyZoomedCard === card) {
-            img.style.transform = "scale(1)";
-            currentlyZoomedCard = null;
-          } else {
-            img.style.transform = "scale(1.1)";
-            currentlyZoomedCard = card;
-          }
-        };
-
-        // Tap outside to zoom out
-        document.addEventListener(
-          "click",
-          (e) => {
-            if (
-              currentlyZoomedCard &&
-              !currentlyZoomedCard.contains(e.target)
-            ) {
-              const zoomedImg = currentlyZoomedCard.querySelector(".zoom-img");
-              if (zoomedImg) zoomedImg.style.transform = "scale(1)";
-              currentlyZoomedCard = null;
-            }
-          },
-          true
-        );
-      } else {
-        // Hover-zoom for desktop
-        card.onclick = null;
-        img.addEventListener("mouseenter", () => {
-          img.style.transform = "scale(1.05)";
-        });
-        img.addEventListener("mouseleave", () => {
-          img.style.transform = "scale(1)";
-        });
-      }
-    });
-    });
-
-   // IMAGES
 document.addEventListener("DOMContentLoaded", () => {
-    const images = document.querySelectorAll('.zoom-img');
+  const cards = document.querySelectorAll(".zoom-card");
+  const isMobile = window.innerWidth < 1024;
+  let currentlyZoomedCard = null;
 
-    // Check if the device supports hover (usually desktop)
-    const supportsHover = window.matchMedia('(hover: hover)').matches;
+  cards.forEach((card) => {
+    const img = card.querySelector(".zoom-img");
+    if (!img) return;
 
-    images.forEach(img => {
-      img.style.transition = 'transform 0.3s ease';
+    img.style.transition = "transform 0.4s ease-in-out";
+    img.style.transform = "scale(1)";
 
-      if (supportsHover) {
-        img.addEventListener('mouseenter', () => {
+    if (isMobile) {
+      // Tap-to-zoom on mobile
+      card.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevent bubbling up
+
+        if (currentlyZoomedCard && currentlyZoomedCard !== card) {
+          const prevImg = currentlyZoomedCard.querySelector(".zoom-img");
+          if (prevImg) prevImg.style.transform = "scale(1)";
+        }
+
+        if (currentlyZoomedCard === card) {
+          img.style.transform = "scale(1)";
+          currentlyZoomedCard = null;
+        } else {
+          img.style.transform = "scale(1.1)";
+          currentlyZoomedCard = card;
+        }
+      });
+
+      // Tap outside to reset
+      document.addEventListener("click", (e) => {
+        if (
+          currentlyZoomedCard &&
+          !currentlyZoomedCard.contains(e.target)
+        ) {
+          const zoomedImg = currentlyZoomedCard.querySelector(".zoom-img");
+          if (zoomedImg) zoomedImg.style.transform = "scale(1)";
+          currentlyZoomedCard = null;
+        }
+      }, true);
+    } else {
+      // Hover-to-zoom on desktop
+      card.addEventListener("mouseenter", () => {
+        img.style.transform = "scale(1.05)";
+      });
+
+      card.addEventListener("mouseleave", () => {
+        img.style.transform = "scale(1)";
+      });
+    }
+  });
+});
+
+
+
+// IMAGES ZOOM + CLICK HANDLING
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll('.zoom-img');
+  const supportsHover = window.matchMedia('(hover: hover)').matches;
+
+  images.forEach(img => {
+    // Add pointer cursor for better UX
+    img.style.cursor = 'pointer';
+    img.style.transition = 'transform 0.3s ease, z-index 0.3s ease';
+
+    if (supportsHover) {
+      img.addEventListener('mouseenter', () => {
+        requestAnimationFrame(() => {
           img.style.transform = 'scale(1.05)';
-          img.style.zIndex = '1';
+          img.style.zIndex = '10';
         });
+      });
 
-        img.addEventListener('mouseleave', () => {
+      img.addEventListener('mouseleave', () => {
+        requestAnimationFrame(() => {
           img.style.transform = 'scale(1)';
           img.style.zIndex = '0';
         });
-      }
-
-      // Always allow click/tap
-      img.addEventListener('click', () => {
-        // Add your click functionality here, e.g. open modal, lightbox, etc.
-        console.log('Image clicked:', img.src);
       });
+    }
+
+    img.addEventListener('click', () => {
+      console.log('Image clicked:', img.src);
+      // TODO: Add lightbox/modal logic here
     });
   });
+});
+
 
 
 
