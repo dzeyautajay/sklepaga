@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Nav 1.2</title>
+  <title>Responsive Nav</title>
    <link rel="stylesheet" href="index.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.js"></script>
@@ -89,86 +89,53 @@
   </div>
 </div>
 
-
-<aside
-  id="sidebar-multi-level-sidebar"
-  class="hidden fixed top-[4.5rem] right-0 z-30 w-64 h-[calc(100vh-4.5rem)] bg-gray-50 dark:bg-gray-800 overflow-y-auto transition-all"
-  aria-label="Sidebar"
->
-  <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+<aside id="sidebar-multi-level-sidebar" class="hidden fixed top-[4.5rem] right-0 z-30 w-64 h-[calc(100vh-4.5rem)] bg-gray-50 dark:bg-gray-800 overflow-y-auto transition-transform duration-300 ease-in-out" aria-label="Sidebar">
+  <div class="h-full px-3 py-4 overflow-y-auto">
     <ul class="space-y-2 font-medium">
-      
-      <!-- Menu 1 -->
+      <!-- Menu Group -->
       <li>
-        <button type="button"
-          class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-          aria-controls="dropdown-example-1"
-          data-collapse-toggle="dropdown-example-1">
+        <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 dark:text-white rounded-lg group hover:bg-gray-100 dark:hover:bg-gray-700" aria-controls="dropdown-1" data-collapse-toggle="dropdown-1">
           <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">E-commerce</span>
-          <svg class="w-[17px] h-[17px] text-gray-800 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-            viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-              d="m19 9-7 7-7-7" />
-          </svg>
+          <svg class="w-[17px] h-[17px] text-gray-800 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="m19 9-7 7-7-7"/></svg>
         </button>
-        <ul id="dropdown-example-1" class="hidden py-2 space-y-2">
-          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Products</a></li>
-          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Billing</a></li>
-          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Invoice</a></li>
+        <ul id="dropdown-1" class="hidden py-2 space-y-2">
+          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Products</a></li>
+          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Billing</a></li>
+          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Invoice</a></li>
         </ul>
       </li>
-
       <li><hr class="border-gray-200 dark:border-gray-700"></li>
 
-      <!-- Menu 2 -->
+      <!-- Copy below block to add more menus -->
       <li>
-        <button type="button"
-          class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-          aria-controls="dropdown-example-2"
-          data-collapse-toggle="dropdown-example-2">
+        <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 dark:text-white rounded-lg group hover:bg-gray-100 dark:hover:bg-gray-700" aria-controls="dropdown-2" data-collapse-toggle="dropdown-2">
           <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">E-commerce</span>
-          <svg class="w-[17px] h-[17px] text-gray-800 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-            viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-              d="m19 9-7 7-7-7" />
-          </svg>
+          <svg class="w-[17px] h-[17px] text-gray-800 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="m19 9-7 7-7-7"/></svg>
         </button>
-        <ul id="dropdown-example-2" class="hidden py-2 space-y-2">
-          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Products</a></li>
-          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Billing</a></li>
-          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Invoice</a></li>
+        <ul id="dropdown-2" class="hidden py-2 space-y-2">
+          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Products</a></li>
+          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Billing</a></li>
+          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Invoice</a></li>
         </ul>
       </li>
-
       <li><hr class="border-gray-200 dark:border-gray-700"></li>
 
-      <!-- Menu 3 -->
+      <!-- Third Menu Example -->
       <li>
-        <button type="button"
-          class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-          aria-controls="dropdown-example-3"
-          data-collapse-toggle="dropdown-example-3">
+        <button type="button" class="flex items-center w-full p-2 text-base text-gray-900 dark:text-white rounded-lg group hover:bg-gray-100 dark:hover:bg-gray-700" aria-controls="dropdown-3" data-collapse-toggle="dropdown-3">
           <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">E-commerce</span>
-          <svg class="w-[17px] h-[17px] text-gray-800 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
-            viewBox="0 0 24 24">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-              d="m19 9-7 7-7-7" />
-          </svg>
+          <svg class="w-[17px] h-[17px] text-gray-800 dark:text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="m19 9-7 7-7-7"/></svg>
         </button>
-        <ul id="dropdown-example-3" class="hidden py-2 space-y-2">
-          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Products</a></li>
-          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Billing</a></li>
-          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Invoice</a></li>
+        <ul id="dropdown-3" class="hidden py-2 space-y-2">
+          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Products</a></li>
+          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Billing</a></li>
+          <li><a href="#" class="flex items-center w-full p-2 pl-11 text-gray-900 dark:text-white rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">Invoice</a></li>
         </ul>
       </li>
-
       <li><hr class="border-gray-200 dark:border-gray-700"></li>
-      
     </ul>
   </div>
 </aside>
-
-
 
 
 <body>
