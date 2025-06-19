@@ -174,6 +174,30 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   dropdownsContainer?.addEventListener("mouseleave", hideDropdown);
+
+    let dropdownCloseTimeout = null;
+
+  function scheduleDropdownClose() {
+    dropdownCloseTimeout = setTimeout(() => {
+      hideDropdown();
+    }, 100);
+  }
+
+  function cancelScheduledDropdownClose() {
+    if (dropdownCloseTimeout) {
+      clearTimeout(dropdownCloseTimeout);
+      dropdownCloseTimeout = null;
+    }
+  }
+
+  // Listen on both nav bar and dropdown area
+  const navBar = desktopMenu; // Assuming your navbar is this container
+  navBar?.addEventListener("mouseleave", scheduleDropdownClose);
+  navBar?.addEventListener("mouseenter", cancelScheduledDropdownClose);
+
+  dropdownsContainer?.addEventListener("mouseleave", scheduleDropdownClose);
+  dropdownsContainer?.addEventListener("mouseenter", cancelScheduledDropdownClose);
+
 });
 // End of NAVIGATION
 
