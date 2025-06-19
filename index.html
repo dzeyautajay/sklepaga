@@ -3,184 +3,135 @@
 <head>
     <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Version 15.2</title>
+  <title>Responsive Nav</title>
    <link rel="stylesheet" href="index.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/flowbite/dist/flowbite.min.js"></script>
 </head>
 
-<!-- NAVIGATION BAR -->
-<!-- NAVIGATION BAR -->
+
+<!-- 🌐 NAVIGATION BAR -->
 <nav class="relative bg-white border-gray-200 dark:border-gray-600 dark:bg-gray-900 z-50">
   <div class="flex flex-wrap items-center justify-between mx-auto max-w-screen-xl p-4">
-    <!-- Logo -->
-    <a href="https://flowbite.com" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="images\sample-image.jpeg" class="h-8" alt="Flowbite Logo" />
-      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+    <a href="#" class="flex items-center space-x-3">
+      <img src="images/sample-image.jpeg" class="h-8" alt="Logo" />
+      <span class="text-2xl font-semibold dark:text-white">MySite</span>
     </a>
 
-    <!-- Hamburger Button -->
-    <button
-      id="menu-toggle-btn"
-      data-collapse-toggle="mega-menu-full"
-      aria-expanded="false"
-      class="md:hidden ml-auto p-2 inline-flex items-center justify-center rounded focus:outline-none focus:ring-2 focus:ring-gray-200">
+    <button id="menu-toggle-btn" type="button" class="md:hidden p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path
-          id="menu-icon-path"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2"
-          d="M4 6h16M4 12h16M4 18h16" />
+        <path id="menu-icon-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
 
-    <!-- Menu Links -->
-   <div id="mega-menu-full" class="items-center justify-between font-medium hidden w-full md:flex md:w-auto md:order-1">
-    <ul
-        class="flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-        <li>
-          <a href="#"
-            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">Home</a>
+    <div id="mega-menu-full" class="hidden w-full md:flex md:w-auto md:order-1">
+      <ul class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-8 font-medium bg-gray-50 md:bg-transparent p-4 md:p-0 mt-4 md:mt-0 border border-gray-100 md:border-0 rounded-lg dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
+        <li class="relative" data-menu="pricing">
+          <a href="#" class="block py-2 px-3 text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500">Pricing</a>
         </li>
-        <li>
-          <button id="mega-menu-full-dropdown-button"
-            class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded-sm md:w-auto hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">
-            Company
-            <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-              viewBox="0 0 10 6">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="m1 1 4 4 4-4" />
-            </svg>
-          </button>
-          
+        <li class="relative" data-menu="resources">
+          <a href="#" class="block py-2 px-3 text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500">Resources</a>
         </li>
-        <li>
-          <a href="#"
-            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">Marketplace</a>
-        </li>
-        <li>
-          <a href="#"
-            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">Resources</a>
-        </li>
-        <li>
-          <a href="#"
-            class="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent">Contact</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- Mega Menu Dropdown -->
-  <div id="mega-menu-full-dropdown"
-    class="absolute top-full left-0 w-full max-h-0 overflow-hidden transition-all duration-300 ease-in-out bg-gray-50 md:bg-white border-y border-gray-200 dark:bg-gray-800 dark:border-gray-600 z-40 opacity-0 pointer-events-none">
-    <div class="grid max-w-screen-xl px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:px-6">
-      <ul>
-        <li>
-          <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-            <div class="font-semibold">Online Stores</div>
-            <span class="text-sm text-gray-500 dark:text-gray-400">Connect with third-party tools that you're already
-              using.</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-            <div class="font-semibold">Segmentation</div>
-            <span class="text-sm text-gray-500 dark:text-gray-400">Target the right customers with relevant
-              messages.</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-            <div class="font-semibold">Marketing CRM</div>
-            <span class="text-sm text-gray-500 dark:text-gray-400">Keep track of your contacts and campaigns.</span>
-          </a>
-        </li>
-      </ul>
-      <ul>
-        <li>
-          <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-            <div class="font-semibold">Automation</div>
-            <span class="text-sm text-gray-500 dark:text-gray-400">Automate your marketing workflows with ease.</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-            <div class="font-semibold">Reports</div>
-            <span class="text-sm text-gray-500 dark:text-gray-400">Detailed analytics and insights at your
-              fingertips.</span>
-          </a>
-        </li>
-        <li>
-          <a href="#" class="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
-            <div class="font-semibold">Integrations</div>
-            <span class="text-sm text-gray-500 dark:text-gray-400">Seamlessly connect with your favorite tools.</span>
-          </a>
+        <li class="relative" data-menu="contact">
+          <a href="#" class="block py-2 px-3 text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500">Contact</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<body>
-
-<!-- HEADER CAROUSEL -->
-<div id="default-carousel" class="relative w-full" data-carousel="slide">
-  <!-- Carousel wrapper -->
-  <div class="relative h-[60vh] overflow-hidden rounded-lg">
-    <!-- Item 1 -->
-    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-      <img src="images\sample-image.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-    </div>
-    <!-- Item 2 -->
-    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-      <img src="images/images.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-    </div>
-    <!-- Item 3 -->
-    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-      <img src="images\sample-image.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-    </div>
-    <!-- Item 4 -->
-    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-      <img src="images/images.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-    </div>
-    <!-- Item 5 -->
-    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-      <img src="images\sample-image.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+<div id="dropdowns-container" class="relative z-40">
+  <div id="dropdown-pricing" class="submenu-dropdown bg-white dark:bg-gray-800 border-y border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white">
+    <div class="max-w-screen-xl mx-auto px-4 py-6 grid sm:grid-cols-2 gap-4">
+      <a href="#" class="dropdown-item block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 opacity-0 translate-y-4 transition-all duration-300">
+        <div class="font-semibold">Basic Plan</div>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Affordable for individuals.</span>
+      </a>
+      <a href="#" class="dropdown-item block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 opacity-0 translate-y-4 transition-all duration-300">
+        <div class="font-semibold">Pro Plan</div>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Best for small teams.</span>
+      </a>
     </div>
   </div>
 
-  <!-- Indicators -->
-  <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-2 rtl:space-x-reverse">
-    <!-- Each dot -->
-    <button type="button" class="indicator-dot relative w-2 h-2 bg-gray-300 rounded-full overflow-hidden" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0">
-      <span class="active-bar absolute left-0 top-0 h-full bg-blue-600 transition-all duration-[3000ms] ease-linear"></span>
-    </button>
-    <button type="button" class="indicator-dot w-2 h-2 bg-gray-300 rounded-full" aria-label="Slide 2" data-carousel-slide-to="1"></button>
-    <button type="button" class="indicator-dot w-2 h-2 bg-gray-300 rounded-full" aria-label="Slide 3" data-carousel-slide-to="2"></button>
-    <button type="button" class="indicator-dot w-2 h-2 bg-gray-300 rounded-full" aria-label="Slide 4" data-carousel-slide-to="3"></button>
-    <button type="button" class="indicator-dot w-2 h-2 bg-gray-300 rounded-full" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+  <div id="dropdown-resources" class="submenu-dropdown bg-white dark:bg-gray-800 border-y border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white">
+    <div class="max-w-screen-xl mx-auto px-4 py-6 grid sm:grid-cols-2 gap-4">
+      <a href="#" class="dropdown-item block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 opacity-0 translate-y-4 transition-all duration-300">
+        <div class="font-semibold">Documentation</div>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Technical guides and API docs.</span>
+      </a>
+      <a href="#" class="dropdown-item block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 opacity-0 translate-y-4 transition-all duration-300">
+        <div class="font-semibold">Tutorials</div>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Step-by-step learning.</span>
+      </a>
+    </div>
   </div>
 
-  <!-- Slider controls -->
-  <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-      <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
-      </svg>
-      <span class="sr-only">Previous</span>
-    </span>
-  </button>
-  <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-      <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
-      </svg>
-      <span class="sr-only">Next</span>
-    </span>
-  </button>
+  <div id="dropdown-contact" class="submenu-dropdown bg-white dark:bg-gray-800 border-y border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white">
+    <div class="max-w-screen-xl mx-auto px-4 py-6 grid sm:grid-cols-2 gap-4">
+      <a href="#" class="dropdown-item block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 opacity-0 translate-y-4 transition-all duration-300">
+        <div class="font-semibold">Support</div>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Get help from our team.</span>
+      </a>
+      <a href="#" class="dropdown-item block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 opacity-0 translate-y-4 transition-all duration-300">
+        <div class="font-semibold">Email Us</div>
+        <span class="text-sm text-gray-500 dark:text-gray-400">We reply within 24 hours.</span>
+      </a>
+      <a href="#" class="dropdown-item block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 opacity-0 translate-y-4 transition-all duration-300">
+        <div class="font-semibold">Support</div>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Get help from our team.</span>
+      </a>
+      <a href="#" class="dropdown-item block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 opacity-0 translate-y-4 transition-all duration-300">
+        <div class="font-semibold">Support</div>
+        <span class="text-sm text-gray-500 dark:text-gray-400">Get help from our team.</span>
+      </a>
+    </div>
+  </div>
 </div>
 
+
+
+<aside id="sidebar-multi-level-sidebar"
+  class="absolute top-[4.5rem] right-0 z-30 w-64 h-[calc(100vh-4.5rem)] bg-gray-50 dark:bg-gray-800 overflow-y-auto transition-transform transform translate-x-full"
+  aria-label="Sidebar">
+  <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+    <ul class="space-y-2 font-medium">
+      <li>
+        <button type="button"
+          class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+          aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+          <svg class="shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
+            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+            <path
+              d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
+          </svg>
+          <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">E-commerce</span>
+          <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="m1 1 4 4 4-4" />
+          </svg>
+        </button>
+        <ul id="dropdown-example" class="hidden py-2 space-y-2">
+          <li>
+            <a href="#"
+              class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Products</a>
+          </li>
+          <li>
+            <a href="#"
+              class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Billing</a>
+          </li>
+          <li>
+            <a href="#"
+              class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Invoice</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</aside>
+
+
+<body>
 <!-- HEADER TITLE -->
 <section class="bg-white px-4 py-8 antialiased dark:bg-gray-900 md:py-16">
   <div class="mx-auto max-w-screen-xl text-center">
@@ -274,10 +225,9 @@
   <div id="carouselCards" class="flex gap-6 flex-nowrap min-w-0 overflow-x-auto scroll-smooth no-scrollbar transition-all duration-700 ease-in-out cursor-grab active:cursor-grabbing">
 
 <!-- Card 1 -->    
-<a href="#" class="block max-w-sm flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700">
-    <!-- Image wrapper with overflow-hidden to contain zoom -->
-    <div class="relative overflow-hidden">
-        <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" />
+<a href="#" class="zoom-card block w-[85%] sm:w-[300px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+  <div class="relative overflow-visible"> <!-- changed here -->
+    <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" style="pointer-events:none;" />
     </div>
     <div class="p-5">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -296,10 +246,9 @@
 </a>
 
 <!-- Card 2 -->    
-<a href="#" class="block max-w-sm flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700">
-    <!-- Image wrapper with overflow-hidden to contain zoom -->
-    <div class="relative overflow-hidden">
-        <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" />
+<a href="#" class="zoom-card block w-[85%] sm:w-[300px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+  <div class="relative overflow-visible"> <!-- changed here -->
+    <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" style="pointer-events:none;" />
     </div>
     <div class="p-5">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -318,10 +267,9 @@
 </a>
 
 <!-- Card 3 -->    
-<a href="#" class="block max-w-sm flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700">
-    <!-- Image wrapper with overflow-hidden to contain zoom -->
-    <div class="relative overflow-hidden">
-        <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" />
+<a href="#" class="zoom-card block w-[85%] sm:w-[300px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+  <div class="relative overflow-visible"> <!-- changed here -->
+    <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" style="pointer-events:none;" />
     </div>
     <div class="p-5">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -340,10 +288,9 @@
 </a>
 
 <!-- Card 4 -->    
-<a href="#" class="block max-w-sm flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700">
-    <!-- Image wrapper with overflow-hidden to contain zoom -->
-    <div class="relative overflow-hidden">
-        <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" />
+<a href="#" class="zoom-card block w-[85%] sm:w-[300px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+  <div class="relative overflow-visible"> <!-- changed here -->
+    <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" style="pointer-events:none;" />
     </div>
     <div class="p-5">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -362,10 +309,9 @@
 </a>
 
   <!-- Card 5 -->    
-<a href="#" class="block max-w-sm flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700">
-    <!-- Image wrapper with overflow-hidden to contain zoom -->
-    <div class="relative overflow-hidden">
-        <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" />
+<a href="#" class="zoom-card block w-[85%] sm:w-[300px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+  <div class="relative overflow-visible"> <!-- changed here -->
+    <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" style="pointer-events:none;" />
     </div>
     <div class="p-5">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -382,12 +328,12 @@
         </div>
     </div>
 </a>
+</a>
 
  <!-- Card 6 -->    
-<a href="#" class="block max-w-sm flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700">
-    <!-- Image wrapper with overflow-hidden to contain zoom -->
-    <div class="relative overflow-hidden">
-        <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" />
+<a href="#" class="zoom-card block w-[85%] sm:w-[300px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+  <div class="relative overflow-visible"> <!-- changed here -->
+    <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" style="pointer-events:none;" />
     </div>
     <div class="p-5">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -406,10 +352,9 @@
 </a>
 
  <!-- Card 7 -->    
-<a href="#" class="block max-w-sm flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700">
-    <!-- Image wrapper with overflow-hidden to contain zoom -->
-    <div class="relative overflow-hidden">
-        <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" />
+<a href="#" class="zoom-card block w-[85%] sm:w-[300px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+  <div class="relative overflow-visible"> <!-- changed here -->
+    <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" style="pointer-events:none;" />
     </div>
     <div class="p-5">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -428,10 +373,9 @@
 </a>
 
  <!-- Card 8 -->    
-<a href="#" class="block max-w-sm flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700">
-    <!-- Image wrapper with overflow-hidden to contain zoom -->
-    <div class="relative overflow-hidden">
-        <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" />
+<a href="#" class="zoom-card block w-[85%] sm:w-[300px] flex-shrink-0 bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+  <div class="relative overflow-visible"> <!-- changed here -->
+    <img class="zoom-img w-full rounded-t-lg" src="images/sample-image.jpeg" alt="" style="pointer-events:none;" />
     </div>
     <div class="p-5">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -448,6 +392,7 @@
         </div>
     </div>
 </a>
+
 
     </div>
     
@@ -484,8 +429,60 @@
   </style>
 </section>
 
+<div class="p-5 mx-auto sm:p-10 md:p-16 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100">
+  <div class="flex flex-col max-w-3xl mx-auto overflow-hidden rounded">
+    <img src="images/sample-image.jpeg" alt="" class="w-full h-60 sm:h-96 bg-gray-200 dark:bg-gray-700">
+    <div class="p-6 pb-12 m-4 mx-auto -mt-16 space-y-6 lg:max-w-2xl sm:px-10 sm:mx-12 lg:rounded-md bg-gray-50 dark:bg-gray-900">
+      <div class="space-y-2">
+        <a href="#" class="inline-block text-2xl font-semibold sm:text-3xl">The Best Activewear from the Nordstrom Anniversary Sale</a>
+        <p class="text-xs text-gray-500 dark:text-gray-400">
+          By
+          <a href="#" class="text-xs hover:underline">Leroy Jenkins</a>
+        </p>
+      </div>
+      <div>
+        <p>Insert the actual text content here...</p>
+      </div>
+    </div>
+  </div>
+</div>
 
-<div class="px-4 md:px-8 bg-white dark:bg-transparent">
+<section class="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100">
+  <div class="container max-w-5xl px-4 py-12 mx-auto">
+    <div class="grid gap-4 mx-4 sm:grid-cols-12">
+      <div class="col-span-12 sm:col-span-3">
+        <div class="text-center sm:text-left mb-14 before:block before:w-24 before:h-3 before:mb-5 before:rounded-md before:mx-auto sm:before:mx-0 before:bg-violet-600 dark:before:bg-violet-400">
+          <h3 class="text-3xl font-semibold">Morbi tempor</h3>
+          <span class="text-sm font-bold tracking-wider uppercase text-gray-500 dark:text-gray-400">Vestibulum diam nunc</span>
+        </div>
+      </div>
+      <div class="relative col-span-12 px-4 space-y-6 sm:col-span-9">
+        <div class="col-span-12 space-y-12 relative px-4 sm:col-span-8 sm:space-y-8 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 before:bg-gray-300 dark:before:bg-gray-700">
+          <!-- Item 1 -->
+          <div class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:bg-violet-600 dark:before:bg-violet-400">
+            <h3 class="text-xl font-semibold tracking-wide">Donec porta enim vel</h3>
+            <time class="text-xs tracking-wide uppercase text-gray-500 dark:text-gray-400">Dec 2020</time>
+            <p class="mt-3">Pellentesque feugiat ante at nisl efficitur, in mollis orci scelerisque. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+          </div>
+          <!-- Item 2 -->
+          <div class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:bg-violet-600 dark:before:bg-violet-400">
+            <h3 class="text-xl font-semibold tracking-wide">Aliquam sit amet nunc ut</h3>
+            <time class="text-xs tracking-wide uppercase text-gray-500 dark:text-gray-400">Jul 2019</time>
+            <p class="mt-3">Morbi vulputate aliquam libero non dictum. Aliquam sit amet nunc ut diam aliquet tincidunt nec nec dui. Donec mollis turpis eget egestas sodales.</p>
+          </div>
+          <!-- Item 3 -->
+          <div class="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:bg-violet-600 dark:before:bg-violet-400">
+            <h3 class="text-xl font-semibold tracking-wide">Pellentesque habitant morbi</h3>
+            <time class="text-xs tracking-wide uppercase text-gray-500 dark:text-gray-400">Jan 2016</time>
+            <p class="mt-3">Suspendisse tincidunt, arcu nec faucibus efficitur, justo velit consectetur nisl, sit amet condimentum lacus orci nec purus. Mauris quis quam suscipit, vehicula felis id, vehicula enim.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="px-4 md:px-8 py-8 bg-white dark:bg-gray-900 transition-colors duration-300">
   <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
     <div class="grid gap-4">
       <a href="#"><img class="zoom-img h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt=""></a>
@@ -509,9 +506,6 @@
     </div>
   </div>
 </div>
-
-
-
 
 <section class="bg-white px-4 py-8 antialiased dark:bg-gray-900 md:py-16">
   <div class="max-w-screen-xl mx-auto">
