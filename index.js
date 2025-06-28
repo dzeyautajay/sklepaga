@@ -145,14 +145,24 @@ document.body.style.paddingRight = "";
 navbar.style.paddingRight = "";
 
 
-      // Reset open submenus
-      document.querySelectorAll('#sidebar-menu .sidebar-menu-body.open').forEach(body => {
-        body.classList.remove('open');
-        body.style.maxHeight = null;
-        body.style.opacity = 0;
-        const svg = body.previousElementSibling.querySelector('svg');
-        svg?.classList.remove('rotate-180');
-      });
+// Reset open submenus and their icon/title styles
+document.querySelectorAll('#sidebar-menu .sidebar-menu-body.open').forEach(body => {
+  body.classList.remove('open');
+  body.style.maxHeight = null;
+  body.style.opacity = 0;
+
+  const header = body.previousElementSibling;
+  const svg = header.querySelector('svg');
+  const title = header.querySelector('h2');
+
+  svg?.classList.remove('rotate-180');
+  svg?.classList.remove('stroke-[#ffdd1a]');
+  svg?.classList.add('stroke-white');
+
+  title?.classList.remove('text-[#ffdd1a]');
+  title?.classList.add('text-white');
+});
+
 
       toggleBtn.disabled = false;
     }, 850);
@@ -178,28 +188,72 @@ navbar.style.paddingRight = "";
   window.addEventListener("resize", () => {
     if (isSidebarOpen) hideSidebar();
   });
-  // ---------------- ACCORDION LOGIC -------------------
-  document.querySelectorAll('#sidebar-menu .sidebar-menu-header').forEach(header => {
-    header.addEventListener('click', () => {
-      const body = header.nextElementSibling;
-      const icon = header.querySelector('svg');
-      const isOpen = body.classList.contains('open');
-      
+// ---------------- ACCORDION LOGIC ----------------
+document.querySelectorAll('#sidebar-menu .sidebar-menu-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const body = header.nextElementSibling;
+    const icon = header.querySelector('svg');
+    const title = header.querySelector('h2');
+    const isOpen = body.classList.contains('open');
 
-      document.querySelectorAll('#sidebar-menu .sidebar-menu-body.open').forEach(openBody => {
-        openBody.classList.remove('open');
-        openBody.style.maxHeight = null;
-        openBody.style.opacity = 0;
-        const svg = openBody.previousElementSibling.querySelector('svg');
-        svg?.classList.remove('rotate-180');
-      });
+    // Close all open bodies
+    document.querySelectorAll('#sidebar-menu .sidebar-menu-body').forEach(openBody => {
+      openBody.classList.remove('open');
+      openBody.style.maxHeight = null;
+      openBody.style.opacity = 0;
 
-      if (!isOpen) {
-        body.classList.add('open');
-        body.style.maxHeight = body.scrollHeight + "px";
-        body.style.opacity = 1;
-        icon?.classList.add('rotate-180');
-      }
+      const otherHeader = openBody.previousElementSibling;
+      const otherIcon = otherHeader.querySelector('svg');
+      const otherTitle = otherHeader.querySelector('h2');
+
+      otherIcon?.classList.remove('rotate-180', 'stroke-[#ffdd1a]');
+      otherIcon?.classList.add('stroke-white');
+
+      otherTitle?.classList.remove('text-[#ffdd1a]');
+      otherTitle?.classList.add('text-white');
     });
+
+    // Open current only if it was closed
+    if (!isOpen) {
+      body.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + "px";
+      body.style.opacity = 1;
+
+      icon?.classList.add('rotate-180');
+      icon?.classList.remove('stroke-white');
+      icon?.classList.add('stroke-[#ffdd1a]');
+
+      title?.classList.remove('text-white');
+      title?.classList.add('text-[#ffdd1a]');
+    }
   });
 });
+
+// ---------------- SUBMENU ACTIVE LOGIC ----------------
+document.querySelectorAll('#sidebar-menu .submenu-link').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelectorAll('#sidebar-menu .submenu-link').forEach(l => {
+      l.classList.remove('active');
+    });
+    link.classList.add('active');
+  });
+});
+
+});
+
+
+// ---------------- HERO ----------------
+  // Fade from solid blue to video after 3 seconds
+  setTimeout(() => {
+    const solid = document.getElementById('bg-solid');
+    const video = document.getElementById('bg-video');
+    solid.style.opacity = 0;
+    video.style.opacity = 1;
+    video.play();
+
+    // When video ends, fade to image
+    video.onended = () => {
+      video.style.opacity = 0;
+      document.getElementById('bg-image').style.opacity = 1;
+    };
+  }, 3000);
