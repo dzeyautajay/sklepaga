@@ -56,8 +56,34 @@
   transform: translateY(10px);
 }
 
+/* SUBMENU color */
+.submenu-link {
+  position: relative;
+  display: inline-block;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
 
+.submenu-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: #ffffff;
+  transition: width 0.3s ease-in-out;
+}
 
+.submenu-link:hover::after {
+  width: 100%;
+}
+
+.submenu-link.active {
+  color: #ffdd1a;
+}
+
+/* End of SUBMENU color */
 
 .hero-heading {
   font-size: 56px; /* Mobile base */
