@@ -261,7 +261,7 @@
 
 /* FONTS*/
 .hero-heading {
-  font-size: 80px; /* Mobile base */
+  font-size: 60px; /* Mobile base */
   line-height: 1.1;
   font-weight: 800; /* Consistent strength */
   letter-spacing: -1.2px;
