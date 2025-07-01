@@ -1,3 +1,19 @@
+@media (prefers-color-scheme: dark) {
+  section[data-dark-bg] {
+    background-color: #242424 !important;
+  }
+}
+/* SRCTION BORDER */
+@media (prefers-color-scheme: dark) {
+  section[data-dark-bg] {
+    background-color: #242424 !important;
+  }
+  [data-dark-border] {
+    border-color: #424242 !important;
+  }
+}
+
+
 /* GLOBAL ANIMATION */
 .fly-in, .left-in, .right-in,
 .fly-in-slow, .left-in-slow, .right-in-slow {
@@ -32,6 +48,173 @@
   transform: translate3d(0, 0, 0);
 }
 
+/* Base button style (light mode: soft black on white) */
+.custom-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 48px;
+  padding-left: 50px;
+  padding-right: 20px;
+  background-color: #ffffff;
+  color: #ffffff;
+  font-size: 16px;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 500;
+  border: 1px solid #242424;
+  border-radius: 24px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+/* Label animation */
+.custom-button .label {
+  white-space: nowrap;
+  transition: transform 0.4s ease;
+  text-shadow: none;
+  -webkit-text-stroke: 0;
+  stroke: none;
+}
+
+/* Arrow circle and icon */
+.arrow-icon {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 39px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+  z-index: 2;
+  pointer-events: none;
+  transform: translateY(-50%);
+  background-color: #242424;  /* dark circle */
+  color: #ffffff;             /* white arrow */
+  border: 1px solid #242424;
+}
+
+/* Arrow SVG sizing and base color */
+.arrow-icon svg {
+  width: 25px;
+  height: 25px;
+  display: block;
+  color: #ffffff; /* Light mode initial arrow color */
+  transition: color 0.4s ease;
+}
+
+/* Hover: invert monochrome scheme */
+.custom-button:hover {
+  background-color: #242424;
+  color: #ffffff;
+   border: 1px solid #242424;
+}
+
+.custom-button:hover .arrow-icon {
+  left: calc(100% - 44px);
+  background-color: #ffffff;  /* light circle */
+  color: #242424;             /* dark arrow */
+  border-color: #ffffff;
+}
+
+.custom-button:hover .arrow-icon svg {
+  color: #242424; /* ensure arrow color switches on hover */
+}
+
+.custom-button:hover .label {
+  transform: translateX(-40px);
+}
+
+/* Sizes */
+.btn-sm,
+.btn-md,
+.btn-lg {
+  height: 48px;
+  border-radius: 24px;
+}
+
+.btn-sm { font-size: 14px; }
+.btn-md { font-size: 16px; }
+.btn-lg { font-size: 18px; }
+
+/* Dark mode: invert colors */
+@media (prefers-color-scheme: dark) {
+  .custom-button {
+    background-color: #242424; /* dark background */
+    color: #ffffff;
+    border-color: #ffffff;
+  }
+
+  .arrow-icon {
+    background-color: #ffffff;  /* light circle */
+    color: #242424;             /* dark arrow */
+    border-color: #ffffff;
+  }
+
+  .arrow-icon svg {
+    color: #242424; /* dark arrow inside light circle */
+  }
+
+  .custom-button:hover {
+    background-color: #ffffff;  /* light background */
+    color: #242424;             /* dark text */
+    border-color: #ffffff;
+  }
+
+  .custom-button:hover .arrow-icon {
+    left: calc(100% - 44px);
+    background-color: #242424;  /* dark circle */
+    color: #ffffff;             /* light arrow */
+    border-color: #242424;
+  }
+
+  .custom-button:hover .arrow-icon svg {
+    color: #ffffff; /* ensure arrow color switches on hover in dark mode */
+  }
+}
+
+/* IMAGE ZOOM EFFECT */
+.zoom img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  will-change: transform;
+}
+
+.zoom:hover img {
+  transform: scale(1.2);
+}
+
+/* TEXT-UNDERLINES */
+.underlines {
+  position: relative;
+  display: inline;
+  color: inherit;
+  padding-bottom: 2px; /* space for underline */
+  background-image: linear-gradient(#fff, #fff); /* Light mode: white underline */
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size 0.4s ease;
+}
+
+.underlines:hover {
+  background-size: 100% 2px;
+}
+
+/* Dark mode: black underline and adjust text color if needed */
+.dark .underlines {
+  background-image: linear-gradient(#000, #000); /* Dark mode: black underline */
+  /* Optionally override text color in dark mode, if you want */
+  /* color: #000; */
+}
+
 
 
 /* NAVBAR */
@@ -56,37 +239,29 @@
   transform: translateY(10px);
 }
 
-/* SUBMENU color */
-.submenu-link {
-  position: relative;
-  display: inline-block;
-  color: #ffffff;
-  transition: color 0.3s ease;
+
+/* FONTS COLOR*/
+
+.font-theme {
+  color: #242424;
 }
 
-.submenu-link::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  width: 0;
-  background-color: #ffffff;
-  transition: width 0.3s ease-in-out;
+@media (prefers-color-scheme: dark) {
+  .font-theme {
+    color: #ffffff;
+  }
 }
 
-.submenu-link:hover::after {
-  width: 100%;
+/* Ensure only child elements inherit font-theme's color */
+.font-theme * {
+  color: inherit;
 }
 
-.submenu-link.active {
-  color: #ffdd1a;
-}
 
-/* End of SUBMENU color */
 
+/* FONTS*/
 .hero-heading {
-  font-size: 56px; /* Mobile base */
+  font-size: 80px; /* Mobile base */
   line-height: 1.1;
   font-weight: 800; /* Consistent strength */
   letter-spacing: -1.2px;
@@ -100,7 +275,7 @@
 
 @media (min-width: 768px) {
   .hero-heading {
-    font-size: 72px;
+    font-size: 120PX;
     line-height: 1.08;
     letter-spacing: -1.6px;
   }
@@ -108,7 +283,7 @@
 
 @media (min-width: 1024px) {
   .hero-heading {
-    font-size: 88px;
+    font-size: 170px;
     line-height: 1.05;
     letter-spacing: -1.8px;
   }
